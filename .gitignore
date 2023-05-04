@@ -1,6 +1,4 @@
-.env
-.env.backup
-/.idea
-/src
-/mysql
-/mysql_test
+mysql
+mysql_test
+.DS_Store
+.idea
