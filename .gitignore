@@ -1,0 +1,6 @@
+.env
+.env.backup
+/.idea
+/src
+/mysql
+/mysql_test
