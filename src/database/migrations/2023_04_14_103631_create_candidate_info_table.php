@@ -21,8 +21,11 @@ return new class extends Migration
             $table->unsignedBigInteger('files_candidate_id');
             $table->unsignedBigInteger('photo_id');
 
-            $table->foreign('organization_id')->references('id')->on('organization');
-            $table->foreign('employer_id')->references('id')->on('employer');
+            $table->integer('candidate_full_name_id')->unsigned()->default(1);
+
+            $table->foreign('candidate_full_name_id')->references('id')->on('candidate_full_name');
+            $table->foreign('files_candidate_id')->references('id')->on('files');
+            $table->foreign('photo_id')->references('id')->on('files');
             $table->timestamps();
         });
     }

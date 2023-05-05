@@ -1,162 +1,87 @@
-# Образец докера для работы с проектом Laravel, который находится в папке src
+# docker-compose-laravel
+A pretty simplified Docker Compose workflow that sets up a LEMP network of containers for local Laravel development. You can view the full article that inspired this repo [here](https://dev.to/aschmelyun/the-beauty-of-docker-for-local-laravel-development-13c0).
 
-## Запуск
+## Usage
 
-Создать папки для базы данных, чтобы не вызвало ошибок:
+To get started, make sure you have [Docker installed](https://docs.docker.com/docker-for-mac/install/) on your system, and then clone this repository.
 
-    mkdir src mysql mysql_test
+Next, navigate in your terminal to the directory you cloned this, and spin up the containers for the web server by running `docker-compose up -d --build app`.
 
-или (если на винде)
+After that completes, follow the steps from the [src/README.md](src/README.md) file to get your Laravel project added in (or create a new blank one).
 
-    mkdir src
-    mkdir mysql
-    mkdir mysql_test
+**Note**: Your MySQL database host name should be `mysql`, **not** `localhost`. The username and database should both be `homestead` with a password of `secret`. 
 
-Копировать .env.example в .env для докера
+Bringing up the Docker Compose network with `app` instead of just using `up`, ensures that only our site's containers are brought up at the start, instead of all of the command containers as well. The following are built for our web server, with their exposed ports detailed:
 
-    cp .env.example .env
+- **nginx** - `:80`
+- **mysql** - `:3306`
+- **php** - `:9000`
+- **redis** - `:6379`
+- **mailhog** - `:8025` 
 
-Сконфигурировать `.env` файл по своему усмотрению, назвать `APP_NAME` проект по-своему, для того, чтобы не путались имена контейнеров
+Three additional containers are included that handle Composer, NPM, and Artisan commands *without* having to have these platforms installed on your local computer. Use the following command examples from your project root, modifying them to fit your particular use case.
 
-И уже после всего этого создать контейнеры
+- `docker-compose run --rm composer update`
+- `docker-compose run --rm npm run dev`
+- `docker-compose run --rm artisan migrate`
 
-    docker compose up -d --build
+## Permissions Issues
 
-Проблема: после установки иногда появляется ошибка `docker endpoint for "default" not found` - решается удалением `.docker` папки в `пользователи/имя пользователя`
+If you encounter any issues with filesystem permissions while visiting your application or running a container command, try completing one of the sets of steps below.
 
-Далее можно использовать как этот образ, так и просто скопировать конфигурацию с необходимым `.env` и скопировать или установить laravel проект в папку `src` со своим `.git`, они не будут пересекаться.
+**If you are using your server or local environment as the root user:**
 
-Нужно учитывать конфликт портов.
+- Bring any container(s) down with `docker-compose down`
+- Replace any instance of `php.dockerfile` in the docker-compose.yml file with `php.root.dockerfile`
+- Re-build the containers by running `docker-compose build --no-cache`
 
-Для создания проекта с нуля, просто выполнить команду (точка в конце обязательна, чтобы проект установился именно в директорию src)
+**If you are using your server or local environment as a user that is not root:**
 
-    docker compose run --rm composer create-project laravel/laravel .
+- Bring any container(s) down with `docker-compose down`
+- In your terminal, run `export UID=$(id -u)` and then `export GID=$(id -g)`
+- If you see any errors about readonly variables from the above step, you can ignore them and continue
+- Re-build the containers by running `docker-compose build --no-cache`
 
-# Containers:
+Then, either bring back up your container network or re-run the command you were trying before, and see if that fixes it.
 
-todo перейти с alpine на нормальные версии (пока сборка неверная)
-todo переписать все команды с версии docker-compose 1 на docker compose 2
-todo сделать пояснения по работе с контейнерами, с флагами и как управлять контейнерами.
+## Persistent MySQL Storage
 
-- [php:8.2-fpm](https://hub.docker.com/layers/library/php/8.2-fpm/images/sha256-30c7cc859f45eced5d70913703281148a7ba3e0afdfb885a7ef311cbe3cf9344?context=explore) (build)
-- [mysql:8](https://registry.hub.docker.com/_/mysql) (image)
-- [nginx:stable-alpine](https://hub.docker.com/_/nginx) (image)
-- [phpmyadmin/phpmyadmin](https://registry.hub.docker.com/r/phpmyadmin/phpmyadmin) (image)
-- [composer как php:8.2-fpm](https://hub.docker.com/layers/library/php/8.2-fpm/images/sha256-30c7cc859f45eced5d70913703281148a7ba3e0afdfb885a7ef311cbe3cf9344?context=explore) (build as php but +)
-- [library/node](https://registry.hub.docker.com/_/node) (image, npm)
+By default, whenever you bring down the Docker network, your MySQL data will be removed after the containers are destroyed. If you would like to have persistent data that remains after bringing containers down and back up, do the following:
 
-# Команды:
+1. Create a `mysql` folder in the project root, alongside the `nginx` and `src` folders.
+2. Under the mysql service in your `docker-compose.yml` file, add the following lines:
 
-## Создание и редактирование контейнеров
+```
+volumes:
+  - ./mysql:/var/lib/mysql
+```
 
-- `docker-compose up -d --build` - создание контейнера
-(его запуск и по этой команде можно пересоздавать(после изменений))
-- `docker-compose down` - удаляет контейнеры
+## Usage in Production
 
-## Доступы в контейнеры
+While I originally created this template for local development, it's robust enough to be used in basic Laravel application deployments. The biggest recommendation would be to ensure that HTTPS is enabled by making additions to the `nginx/default.conf` file and utilizing something like [Let's Encrypt](https://hub.docker.com/r/linuxserver/letsencrypt) to produce an SSL certificate.
 
-По сути одинаковые действия, но реализация и работа разная:
+## Compiling Assets
 
-- `docker exec -it имя_контейнера команда контейнера` - команда внутри работающего контейнера
+This configuration should be able to compile assets with both [laravel mix](https://laravel-mix.com/) and [vite](https://vitejs.dev/). In order to get started, you first need to add ` --host 0.0.0.0` after the end of your relevant dev command in `package.json`. So for example, with a Laravel project using Vite, you should see:
 
-- `docker-compose run --rm имя_контейнера команда контейнера` - команда, которая создает временный контейнер и выполняет команду в существующем контейнере, уничтожается.
+```json
+"scripts": {
+  "dev": "vite --host 0.0.0.0",
+  "build": "vite build"
+},
+```
 
-### Быстрые команды:
+Then, run the following commands to install your dependencies and start the dev server:
 
-- `docker exec -it php sh` - запуск консоли внутри контейнера
-- `docker-compose run --rm npm -v` версия npm
-- `docker-compose run --rm php -v` версия php
-- `docker-compose run --rm artisan -V` версия laravel
-- `docker-compose run --rm composer -V` версия composer
+- `docker-compose run --rm npm install`
+- `docker-compose run --rm --service-ports npm run dev`
 
-Команды внутри контейнера
-- `ls -l` -список директорий по разрешению
+After that, you should be able to use `@vite` directives to enable hot-module reloading on your local Laravel application.
 
-Исполнители для работы:
+Want to build for production? Simply run `docker-compose run --rm npm run build`.
 
-- `docker-compose run --rm npm -i` установка пакета npm в папку `src`
+## MailHog
 
-При работе с разработкой пакетов и библиотек для laravel не добавлять в `src/composer.json` этот код (как советуют, это приведет к тому что симлинк не находится внутри контейнера): ещё раз НЕ ПРИМЕНЯТЬ ЭТОТ КОД, УБРАТЬ
+The current version of Laravel (9 as of today) uses MailHog as the default application for testing email sending and general SMTP work during local development. Using the provided Docker Hub image, getting an instance set up and ready is simple and straight-forward. The service is included in the `docker-compose.yml` file, and spins up alongside the webserver and database services.
 
-    "options": {
-        "symlink": true
-    }
-
-## По работе проекта:
-
-- Для того чтобы собирать данные контейнеры для разных приложений в `.env` стоит назвать `APP_NAME`,
- чтобы для каждого проекта были свои контейнеры. Лучше называть с нижним подчеркиванием в начале
-- Если нужно запустить разные сборки контейнеров одновременно - нужно поменять порты сервисов (контейнеров) во избежание конфликтов
-- Возможности общего шаблона будут дополнены после проверки его на всех моих проектах (дополнительные либы для php и дополнительные контейнеры (типо phpmyadmin))
-- Данный контейнер собирается, как группа контейнеров, которые описаны в `docker-compose.yml`
-- Код фреймворка (Laravel) находится в папке `src` и `.gitignore` игнорирует то, что внутри, так как внутри данной папки - репозиторий `git` фреймворка (как проекта)
-- В данной сборке используется `nginx`, но можно использовать и настроить `apache` -
-механизм не будет отличаться, при обновлении файлов внутри `src` не нужно перезапускать контейнеры.
-- ВАЖНО: все эти настройки - для локальной работы с проектом, для боевой версии немного другая конфигурация. (возможно, для каждого сервера своя)
-
-## Конфигурация образа в отдельном файле:
-
-- Вместо `image` в `docker-compose.yml` используется синтаксис `build` и внутри `build:` 2 переменные `context` - где этот файл искать (`./php`) и `dockerfile` - название докерфайла. (лучше это сделать в отдельной папке)
-
-
-## Конфигурация mysql:
-
-- База данных работает сначала с одной таблицей, с одним пользователем, который имеет доступ на чтение только одной базы
-- При конфигурации базы данных в проекте необходимо указать начальную базу данных как в настройках `.env` проекта (в папке `src`)
- и изменить подключение с `localhost` или с `127.0.0.1` на название базы контейнера (в данном случае `mysql`)
- и это выглядит так:
-
-        DB_HOST=mysql
-        DB_USERNAME=mysql
-        DB_PASSWORD=mysql
-
-- для тестирования нужно в `phpunit.xml` указать `<env name="DB_HOST" value="mysql-tests"/>` в `<php>` тэге, что соответствует бд с тестовым контейнером. Не забыть указать `phpunit.xml` как конфигурационный файл для тестирования в phpstorm в настройках `Php/Test Frameworks`
-
-- Если проект содержит несколько баз данных, их надо создать или копировать (если проект переносится на docker)
- и добавить права стандартному пользователю (в данном случае пользователю `mysql`)
-- дополнительные параметры находятся в `./mysqlconf/my.cnf` - при их изменении достаточно просто перезапустить контейнер `mysql`
-- долго не мог решить проблему того, что не используется файл `my.cnf` решение оказалось простое - ` command: --innodb_use_native_aio=0` в настройках контейнера
-- `mysql -uroot -pmysql -hlocalhost -P3306 -e 'show global variables like "max_allowed_packet"';` - полезная команда выполняется внутри контейнера
-
-## Конфигурация nginx:
-
-- Создается отдельный файл конфигурации в папке `./nginx` с названием `default.conf`  -
- данные об этом указываются в настройке контейнера в `docker-compose.yml` в настройках nginx в `volumes`
-
-
-## Работа с composer контейнером:
-
-- После билда этот контейнер в состоянии отключенного.
-- Выполнять команды для composer нужно с префиксом `--rm` - так как composer создает команду, по выполнении которой - команда должна быть удалена. 
-Иначе будет создан ещё один контейнер. Пример - узнать версию `docker-compose run --rm composer -V`
-- Данный контейнер в стандартной сборке использует совсем урезанную версию `php` с которой невозможны большинство моих проектов, поэтому я собираю билд.
-- Важно понимать что `php`, который используется внутри стандартной сборки `composer` это не тот же самый, что используется в текущем контейнере `php`, ещё раз повторю, это причина почему я собираю билд.
-- Внутри папки `./php/composer` есть файл `php.ini` он нужен для настроек всех образов `php` в данной группе контейнеров
-
-
-## Работа с одновременно запущенными контейнерами, если они связаны
-
-- не достаточно просто изменить порты и обращаться по имени контейнера вместо url
-- Для создания моста между 2 группами контейнеров нужно создать новый `network`, это будет выглядеть так
-
-      networks:
-        laravel:
-        app-shared:
-          driver: bridge
-
-- Данный `network` нужно указать в `networks` контейнеров `nginx` и `php`
-- Для того чтобы использовать этот `network` в другом приложении необходимо узнать его точно имя,
-оно указывается при создании контейнера, в моём случае это `laravel_example_container_app-shared` ,
-можно проследить и предугадать как именно создается имя, но учитывая синтаксис (без точек и символов в верхнем регистре)
-- Вот так это будет выглядеть в проекте `приемнике` запросов (не забыть присвоить
-
-      networks:
-          laravel:
-          laravel_example_container_app-shared:
-            external: true
-
----
-
-# Проблемы с контейнером:
-
-- Нет прав на запись в директории storage. Как решить? в создании образа docker нужно чтобы в директории с проектом устанавливать права `www-data` при формировании контейнера, если это не получается, пока обходиться временными костылями - заходить в контейнер php (например `docker exec -it php sh`, затем присваивать роль с помощью команды `chown -R www-data storage/` Пока всё.
+To see the dashboard and view any emails coming through the system, visit [localhost:8025](http://localhost:8025) after running `docker-compose up -d site`.

@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('location_educational_university');
             $table->string('institute');
             $table->integer('year_of_release');
+
+            $table->integer('candidate_full_name_id')->unsigned()->default(1);
+
+            $table->foreign('candidate_full_name_id')->references('id')->on('candidate_full_name');
             $table->timestamps();
         });
     }

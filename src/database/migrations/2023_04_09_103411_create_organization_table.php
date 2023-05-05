@@ -27,8 +27,8 @@ return new class extends Migration
 
             $table->foreign('employer_id')->references('id')->on('employer');
             $table->foreign('vacancies_id')->references('id')->on('vacancy');
-            $table->foreign('photo_id')->references('id')->on('photo');
-            $table->foreign('files_organization_id')->references('id')->on('files_organization');
+            $table->foreign('photo_id')->references('id')->on('files');
+            $table->foreign('files_organization_id')->references('id')->on('files');
             $table->timestamps();
         });
     }
