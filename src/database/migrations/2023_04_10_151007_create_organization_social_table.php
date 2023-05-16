@@ -17,9 +17,8 @@ return new class extends Migration
             $table->integer('phone_number');
             $table->string('address');
 
-            $table->integer('organization_id')->unsigned()->default(1);
+            $table->foreignId('organization_id')->constrained('organization');
 
-            $table->foreign('organization_id')->references('id')->on('organization');
             $table->timestamps();
         });
     }

@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employer_info',
-            function (Blueprint $table) {
+        Schema::create('employer_info', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('surname');
             $table->string('patronymic');
 
-            $table->integer('employer_id')->unsigned()->default(1);
-
-            $table->foreign('employer_id')->references('id')->on('employer');
+            $table->foreignId('employer_id')->constrained('employer');
                 $table->timestamps();
         });
     }

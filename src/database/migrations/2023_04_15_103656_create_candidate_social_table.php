@@ -18,9 +18,9 @@ return new class extends Migration
             $table->integer('phone_number');
             $table->string('address');
 
-            $table->integer('candidate_full_name_id')->unsigned()->default(1);
+            $table->foreignId('candidate_full_name_id')->constrained('candidate_full_name');
 
-            $table->foreign('candidate_full_name_id')->references('id')->on('candidate_full_name');
+
             $table->foreign('email')->references('email')->on('candidate');
             $table->timestamps();
         });

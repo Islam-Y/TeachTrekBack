@@ -19,9 +19,8 @@ return new class extends Migration
             $table->integer('start_work');
             $table->integer('end_work');
 
-            $table->integer('candidate_full_name_id')->unsigned()->default(1);
+            $table->foreignId('candidate_full_name_id')->constrained('candidate_full_name');
 
-            $table->foreign('candidate_full_name_id')->references('id')->on('candidate_full_name');
             $table->timestamps();
         });
     }

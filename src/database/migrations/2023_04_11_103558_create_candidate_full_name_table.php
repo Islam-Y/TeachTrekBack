@@ -17,9 +17,8 @@ return new class extends Migration
             $table->string('surname');
             $table->string('patronymic');
 
-            $table->integer('candidate_id')->unsigned()->default(1);
+            $table->foreignId('candidate_id')->constrained('candidate');
 
-            $table->foreign('candidate_id')->references('id')->on('candidate');
             $table->timestamps();
         });
     }

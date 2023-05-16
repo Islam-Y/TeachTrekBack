@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('salary');
-            $table->unsignedBigInteger('organization_id');
             $table->string('city_vacancy');
             $table->string('underground');
             $table->text('description');
@@ -24,7 +23,6 @@ return new class extends Migration
             $table->text('requirements');
             $table->text('advantages_vacancy');
 
-            $table->foreign('organization_id')->references('id')->on('organization');
             $table->foreign('employer_id')->references('id')->on('employer');
             $table->timestamps();
         });
