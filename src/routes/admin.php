@@ -41,4 +41,3 @@ Route::resource('vacancy', VacancyController::class);
 Route::get('/', function () {
     return view('welcome');
 });
-

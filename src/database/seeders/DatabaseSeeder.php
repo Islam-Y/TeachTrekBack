@@ -18,5 +18,17 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+         \App\Models\User::factory(10)->create();
+
+         Post::factory(10)->create();
+
+         AdminUser::factory(1)->create([
+             'name' => 'Admin',
+             'email' => 'laravel@laravel.com',
+             'password' => bcrypt(12345),
+         ]);
+
+
     }
 }
