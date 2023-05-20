@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class files extends Model
+class AdminUser extends Model
 {
     use HasFactory;
-    protected $table = 'files';
+    protected $table = 'admin_users';
 
-    protected $fillable = [];
+    protected $fillable = [
+       'name', 'email', 'password'
+    ];
 }

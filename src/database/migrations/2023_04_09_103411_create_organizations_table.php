@@ -11,24 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('organization', function (Blueprint $table) {
+        Schema::create('organizations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('type');
             $table->unsignedBigInteger('employer_id');
             $table->string('city_organization');
-            $table->unsignedBigInteger('vacancies_id');
-            $table->unsignedBigInteger('photo_id');
+            $table->unsignedBigInteger('vacancy_id');
+            $table->unsignedBigInteger('photo_id')->nullable();
             $table->integer('number_employees');
-            $table->integer('number_students');
+            $table->integer('number_students')->nullable();
             $table->text('description');
             $table->text('description_mini');
-            $table->unsignedBigInteger('files_organization_id');
+            $table->unsignedBigInteger('file_organization_id')->nullable();
 
-            $table->foreign('employer_id')->references('id')->on('employer');
-            $table->foreign('vacancies_id')->references('id')->on('vacancy');
+            $table->foreign('employer_id')->references('id')->on('employers');
+            $table->foreign('vacancy_id')->references('id')->on('vacancies');
             $table->foreign('photo_id')->references('id')->on('files');
-            $table->foreign('files_organization_id')->references('id')->on('files');
+            $table->foreign('file_organization_id')->references('id')->on('files');
             $table->timestamps();
         });
     }
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('organization');
+        Schema::dropIfExists('organizations');
     }
 };

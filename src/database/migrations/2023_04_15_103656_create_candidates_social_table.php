@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('candidate_social', function (Blueprint $table) {
+        Schema::create('candidates_social', function (Blueprint $table) {
             $table->id();
             $table->string('social_links');
             $table->string('email');
             $table->integer('phone_number');
             $table->string('address');
 
-            $table->foreignId('candidate_full_name_id')->constrained('candidate_full_name');
+            $table->foreignId('candidate_full_name_id')->constrained('candidates_full_name');
 
 
-            $table->foreign('email')->references('email')->on('candidate');
+            $table->foreign('email')->references('email')->on('candidates');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('candidate_social');
+        Schema::dropIfExists('candidates_social');
     }
 };

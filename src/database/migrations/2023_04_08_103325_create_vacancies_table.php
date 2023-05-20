@@ -11,19 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vacancy', function (Blueprint $table) {
+        Schema::create('vacancies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('salary');
             $table->string('city_vacancy');
-            $table->string('underground');
+            $table->string('underground')->nullable();
             $table->text('description');
             $table->unsignedBigInteger('employer_id');
             $table->text('duties');
             $table->text('requirements');
             $table->text('advantages_vacancy');
 
-            $table->foreign('employer_id')->references('id')->on('employer');
+            $table->foreign('employer_id')->references('id')->on('employers');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vacancy');
+        Schema::dropIfExists('vacancies');
     }
 };
