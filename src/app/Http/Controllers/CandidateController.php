@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Http\Requests\StoreCandidateRequest;
 use App\Http\Requests\UpdateCandidateRequest;
-use App\Models\Candidate;
+use App\Models\candidate;
+use Illuminate\Support\Facades\Hash;
+
 
 class CandidateController extends Controller
 {
@@ -13,7 +16,8 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        //
+        $candidates = Candidate::all();
+        return view('candidates_list', ['candidates' => $candidates, 'title' => 'Candidates']);
     }
 
     /**
@@ -21,7 +25,7 @@ class CandidateController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -29,7 +33,14 @@ class CandidateController extends Controller
      */
     public function store(StoreCandidateRequest $request)
     {
-        //
+        $candidate = new Candidate;
+        $candidate->email = $request->email;
+        $hashed_password = Hash::make($request->password);
+        $candidate->password = $hashed_password;
+        $candidate->save();
+
+        // TODO: Add redirection page
+        return redirect('');
     }
 
     /**
