@@ -15,6 +15,6 @@ class Candidate_full_name extends Model
     ];
 
     public function candidates(){
-        $this->hasMany(Candidate::class)->orderBy("created_at");
+        $this->hasMany(Candidate::class);
     }
 }

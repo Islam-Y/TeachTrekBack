@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreFilesRequest;
 use App\Http\Requests\UpdateFilesRequest;
-use App\Models\Files;
+use App\Models\File;
 
-class Admin_FilesController extends Controller
+class FileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class Admin_FilesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Files $files)
+    public function show(File $files)
     {
         //
     }
@@ -43,7 +43,7 @@ class Admin_FilesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Files $files)
+    public function edit(File $files)
     {
         //
     }
@@ -51,7 +51,7 @@ class Admin_FilesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFilesRequest $request, Files $files)
+    public function update(UpdateFilesRequest $request, File $files)
     {
         //
     }
@@ -59,7 +59,7 @@ class Admin_FilesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Files $files)
+    public function destroy(File $files)
     {
         //
     }

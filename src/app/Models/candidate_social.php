@@ -17,11 +17,11 @@ class Candidate_social extends Model
 
     public function candidates_full_name()
     {
-        $this->hasMany(Candidate_full_name::class)->orderBy("created_at");
+        $this->hasMany(Candidate_full_name::class);
     }
 
     public function candidates()
     {
-        $this->hasMany(Candidate::class)->orderBy("created_at");
+        $this->hasMany(Candidate::class);
     }
 }

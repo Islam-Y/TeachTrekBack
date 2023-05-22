@@ -15,7 +15,7 @@ class Vacancy extends Model
     ];
 
     public function employers(){
-        $this->hasMany(Employer::class)->orderBy("created_at");
+        $this->hasMany(Employer::class);
     }
 
 }

@@ -11,11 +11,14 @@ class Organization extends Model
     protected $table = 'organizations';
 
     protected $fillable = [
-        'name', 'type', 'employer_id', 'city_organization', 'vacancy_id', 'photo_id', 'number_employees', 'number_students', 'description', 'description_mini', 'file_organization_id'
+        'name', 'type', 'employer_id',
+        'city_organization', 'vacancy_id',
+        'photo_id', 'number_employees', 'number_students',
+        'description', 'description_mini', 'file_organization_id'
     ];
 
     public function employers(){
-        $this->hasMany(Employer::class)->orderBy("created_at");
+        $this->hasMany(Employer::class);
     }
 
     public function vacancies(){
