@@ -13,7 +13,9 @@ class Admin_Employer_infoController extends Controller
      */
     public function index()
     {
-        //
+        $employers_info = Employer_info::all();
+
+        return view('employers_info.index', compact('employers_info'));
     }
 
     /**
@@ -21,7 +23,7 @@ class Admin_Employer_infoController extends Controller
      */
     public function create()
     {
-        //
+        return view('employers_info.create');
     }
 
     /**
@@ -29,7 +31,16 @@ class Admin_Employer_infoController extends Controller
      */
     public function store(StoreEmployer_infoRequest $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'surname' => 'required',
+            'patronymic' => 'required',
+            'employer_id' => 'required',
+        ]);
+
+        Employer_info::create($request->all());
+
+        return redirect()->route('employers_info.index')->with('success','Employer_info created successfully.');
     }
 
     /**
@@ -37,7 +48,7 @@ class Admin_Employer_infoController extends Controller
      */
     public function show(Employer_info $employer_info)
     {
-        //
+        return view('employers_info.show',compact('employer_info'));
     }
 
     /**
@@ -45,7 +56,7 @@ class Admin_Employer_infoController extends Controller
      */
     public function edit(Employer_info $employer_info)
     {
-        //
+        return view('employers_info.edit',compact('employer_info'));
     }
 
     /**
@@ -53,7 +64,16 @@ class Admin_Employer_infoController extends Controller
      */
     public function update(UpdateEmployer_infoRequest $request, Employer_info $employer_info)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'surname' => 'required',
+            'patronymic' => 'required',
+            'employer_id' => 'required',
+        ]);
+
+        $employer_info->update($request->all());
+
+        return redirect()->route('employers_info.index')->with('success','Employer_info updated successfully');
     }
 
     /**
@@ -61,6 +81,9 @@ class Admin_Employer_infoController extends Controller
      */
     public function destroy(Employer_info $employer_info)
     {
-        //
+        $employer_info->delete();
+
+        return redirect()->route('employers_info.index')
+            ->with('success','Employer_info deleted successfully');
     }
 }

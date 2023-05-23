@@ -13,9 +13,9 @@ class Admin_CandidateController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $candidates = Candidate::all();
 
-        return view('posts.index', compact('posts'));
+        return view('candidates.index', compact('candidates'));
     }
 
     /**
@@ -23,7 +23,7 @@ class Admin_CandidateController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        return view('candidates.create');
     }
 
     /**
@@ -32,13 +32,13 @@ class Admin_CandidateController extends Controller
     public function store(StoreCandidateRequest $request)
     {
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
+            'email' => 'required',
+            'password' => 'required',
         ]);
 
-        Post::create($request->all());
+        Candidate::create($request->all());
 
-        return redirect()->route('posts.index')->with('success','Post created successfully.');
+        return redirect()->route('candidates.index')->with('success','Candidate created successfully.');
     }
 
     /**
@@ -46,7 +46,7 @@ class Admin_CandidateController extends Controller
      */
     public function show(Candidate $candidate)
     {
-        return view('posts.show',compact('post'));
+        return view('candidates.show',compact('candidate'));
     }
 
     /**
@@ -54,7 +54,7 @@ class Admin_CandidateController extends Controller
      */
     public function edit(Candidate $candidate)
     {
-        return view('posts.edit',compact('post'));
+        return view('candidates.edit',compact('candidate'));
     }
 
     /**
@@ -63,13 +63,13 @@ class Admin_CandidateController extends Controller
     public function update(UpdateCandidateRequest $request, Candidate $candidate)
     {
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
+            'email' => 'required',
+            'password' => 'required',
         ]);
 
-        $post->update($request->all());
+        $candidate->update($request->all());
 
-        return redirect()->route('posts.index')->with('success','Post updated successfully');
+        return redirect()->route('candidates.index')->with('success','Candidate updated successfully');
     }
 
     /**
@@ -77,9 +77,9 @@ class Admin_CandidateController extends Controller
      */
     public function destroy(Candidate $candidate)
     {
-        $post->delete();
+        $candidate->delete();
 
-        return redirect()->route('posts.index')
-            ->with('success','post deleted successfully');
+        return redirect()->route('candidates.index')
+            ->with('success','Candidate deleted successfully');
     }
 }
