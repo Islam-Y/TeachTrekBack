@@ -1,5 +1,7 @@
 @extends('base')
 
+@section('content')
 @foreach ($candidates as $candidate)
-    <p>{{ $candidate->name }}</p>
+    <p>{{ $candidate->email }}</p>
 @endforeach
+@endsection
