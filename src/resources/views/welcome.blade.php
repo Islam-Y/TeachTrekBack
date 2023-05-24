@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('title', 'Главная страница Teach Trek')
 @section('content')
-
+    @include('partials.header')
 
 
 <main class="main-hero">

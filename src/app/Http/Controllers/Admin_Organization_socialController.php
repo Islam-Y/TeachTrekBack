@@ -13,10 +13,7 @@ class Admin_Organization_socialController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-=======
         //
->>>>>>> 2a4f1f39ce1ad1c9b8c06149d8c35a88ef8f9756
         $organizations_social = Organization_social::all();
 
         return view('organizations_social.index', compact('organizations_social'));
@@ -27,10 +24,7 @@ class Admin_Organization_socialController extends Controller
      */
     public function create()
     {
-<<<<<<< HEAD
-=======
         //
->>>>>>> 2a4f1f39ce1ad1c9b8c06149d8c35a88ef8f9756
         return view('organizations_social.create');
     }
 
@@ -39,10 +33,7 @@ class Admin_Organization_socialController extends Controller
      */
     public function store(StoreOrganization_socialRequest $request)
     {
-<<<<<<< HEAD
-=======
         //
->>>>>>> 2a4f1f39ce1ad1c9b8c06149d8c35a88ef8f9756
         $request->validate([
             'social_links' => 'required',
             'phone_number' => 'required',
@@ -60,10 +51,7 @@ class Admin_Organization_socialController extends Controller
      */
     public function show(Organization_social $organization_social)
     {
-<<<<<<< HEAD
-=======
         //
->>>>>>> 2a4f1f39ce1ad1c9b8c06149d8c35a88ef8f9756
         return view('organizations_social.show',compact('organization_social'));
     }
 
@@ -72,10 +60,7 @@ class Admin_Organization_socialController extends Controller
      */
     public function edit(Organization_social $organization_social)
     {
-<<<<<<< HEAD
-=======
         //
->>>>>>> 2a4f1f39ce1ad1c9b8c06149d8c35a88ef8f9756
         return view('organizations_social.edit',compact('organization_social'));
     }
 
@@ -84,10 +69,7 @@ class Admin_Organization_socialController extends Controller
      */
     public function update(UpdateOrganization_socialRequest $request, Organization_social $organization_social)
     {
-<<<<<<< HEAD
-=======
         //
->>>>>>> 2a4f1f39ce1ad1c9b8c06149d8c35a88ef8f9756
         $request->validate([
             'social_links' => 'required',
             'phone_number' => 'required',
@@ -105,10 +87,7 @@ class Admin_Organization_socialController extends Controller
      */
     public function destroy(Organization_social $organization_social)
     {
-<<<<<<< HEAD
-=======
         //
->>>>>>> 2a4f1f39ce1ad1c9b8c06149d8c35a88ef8f9756
         $organization_social->delete();
 
         return redirect()->route('organizations_social.index')

@@ -3,7 +3,10 @@
         <a class="logo" href = "{{route("home")}}" >
             <img src = "#" class="logo-img"  alt="Logo Teach Trek">
         </a>
+
+        <a href="{{route("login")}}">
         <button type="button" name="enter-button" value="Войти"><img src="img/profile.svg"></button>
+        </a>
     </div>
 
     <nav class="main-nav">

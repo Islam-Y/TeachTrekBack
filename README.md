@@ -1,3 +1,22 @@
+Edit 24.05.2023
+{
+npx is already included in the npm image, however it runs as a separate command. In order to run it you have to remove the entrypoint parameter at the docker-compose.yml file. So the npm service turns into:
+npm:
+image: node:13.7
+container_name: npm
+volumes:
+- ./src:/var/www/html
+ports:
+- 3000:3000
+- 3001:3001
+working_dir: /var/www/html
+
+After that you can use npx by:
+docker-compose run --rm npm npx
+
+Take into account that this also changes the way you run npm. The respective npm should change into (i.e.):
+docker-compose run --rm npm npm run development
+}
 # docker-compose-laravel
 A pretty simplified Docker Compose workflow that sets up a LEMP network of containers for local Laravel development. You can view the full article that inspired this repo [here](https://dev.to/aschmelyun/the-beauty-of-docker-for-local-laravel-development-13c0).
 
