@@ -14,6 +14,9 @@ class Admin_VacancyController extends Controller
     public function index()
     {
         //
+        $vacancies = Vacancy::all();
+
+        return view('vacancies.index', compact('vacancies'));
     }
 
     /**
@@ -22,6 +25,7 @@ class Admin_VacancyController extends Controller
     public function create()
     {
         //
+        return view('vacancies.create');
     }
 
     /**
@@ -30,6 +34,17 @@ class Admin_VacancyController extends Controller
     public function store(StoreVacancyRequest $request)
     {
         //
+        $request->validate([
+            'name' => 'required', 'salary' => 'required',
+            'city_vacancy' => 'required', 'underground' => 'required',
+            'description' => 'required', 'employer_id' => 'required',
+            'duties' => 'required', 'requirements' => 'required',
+            'advantages_vacancy' => 'required',
+        ]);
+
+        Vacancy::create($request->all());
+
+        return redirect()->route('vacancies.index')->with('success','Vacancy created successfully.');
     }
 
     /**
@@ -38,6 +53,7 @@ class Admin_VacancyController extends Controller
     public function show(Vacancy $vacancy)
     {
         //
+        return view('vacancies.show',compact('vacancy'));
     }
 
     /**
@@ -46,6 +62,7 @@ class Admin_VacancyController extends Controller
     public function edit(Vacancy $vacancy)
     {
         //
+        return view('vacancies.edit',compact('vacancy'));
     }
 
     /**
@@ -54,6 +71,17 @@ class Admin_VacancyController extends Controller
     public function update(UpdateVacancyRequest $request, Vacancy $vacancy)
     {
         //
+        $request->validate([
+            'name' => 'required', 'salary' => 'required',
+            'city_vacancy' => 'required', 'underground' => 'required',
+            'description' => 'required', 'employer_id' => 'required',
+            'duties' => 'required', 'requirements' => 'required',
+            'advantages_vacancy' => 'required',
+        ]);
+
+        $vacancy->update($request->all());
+
+        return redirect()->route('vacancies.index')->with('success','Vacancy updated successfully');
     }
 
     /**
@@ -62,5 +90,9 @@ class Admin_VacancyController extends Controller
     public function destroy(Vacancy $vacancy)
     {
         //
+        $vacancy->delete();
+
+        return redirect()->route('vacancies.index')
+            ->with('success','Vacancy deleted successfully');
     }
 }

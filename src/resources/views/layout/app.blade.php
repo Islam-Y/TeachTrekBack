@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Work+Sans:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
     <link href="/css/app.css" rel="stylesheet">
+
     <title>@yield('title')</title>
 </head>
 <body>
