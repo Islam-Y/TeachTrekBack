@@ -11,19 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('candidate_info', function (Blueprint $table) {
+        Schema::create('candidates_info', function (Blueprint $table) {
             $table->id();
             $table->string('floor');
             $table->string('profession');
             $table->string('specialization');
             $table->string('city_candidate');
             $table->text('description');
-            $table->unsignedBigInteger('files_candidate_id');
-            $table->unsignedBigInteger('photo_id');
+            $table->unsignedBigInteger('file_candidate_id')->nullable();
+            $table->unsignedBigInteger('photo_id')->nullable();
 
-            $table->foreignId('candidate_full_name_id')->constrained('candidate_full_name');
+            $table->foreignId('candidate_full_name_id')->constrained('candidates_full_name');
 
-            $table->foreign('files_candidate_id')->references('id')->on('files');
+            $table->foreign('file_candidate_id')->references('id')->on('files');
             $table->foreign('photo_id')->references('id')->on('files');
             $table->timestamps();
         });
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('candidate_info');
+        Schema::dropIfExists('candidates_info');
     }
 };

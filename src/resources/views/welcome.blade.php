@@ -1,34 +1,8 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Work+Sans:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+@extends('layout.app')
+@section('title', 'Главная страница Teach Trek')
+@section('content')
 
-{{--    <link href="css/style.css" rel="stylesheet">--}}
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-    <title>Meejob</title>
-</head>
-<body>
-<header class="header-main">
-    <div class="header-up">
-        <a class="logo" href = "#" >
-            <img src = "#" class="logo-img"  alt="Logo Meejob">
-        </a>
-        <button type="button" name="enter-button" value="Войти"><img src="img/profile.svg"></button>
-    </div>
-
-    <nav class="main-nav">
-        <div class="header-down">
-            <a href="#">Вакансии</a>
-            <a href="#">Организации</a>
-            <a href="#">Контакты</a>
-        </div>
-    </nav>
-</header>
 
 <main class="main-hero">
     <section class="hero">
@@ -160,5 +134,6 @@
     </div>
     <script src="toggle_user.js"></script>
 </footer>
-</body>
-</html>
+
+
+@endsection

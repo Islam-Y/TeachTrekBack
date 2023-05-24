@@ -13,7 +13,9 @@ class Admin_EmployerController extends Controller
      */
     public function index()
     {
-        //
+        $employers = Employer::all();
+
+        return view('employers.index', compact('employers'));
     }
 
     /**
@@ -21,7 +23,7 @@ class Admin_EmployerController extends Controller
      */
     public function create()
     {
-        //
+        return view('employers.create');
     }
 
     /**
@@ -29,7 +31,14 @@ class Admin_EmployerController extends Controller
      */
     public function store(StoreEmployerRequest $request)
     {
-        //
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        Employer::create($request->all());
+
+        return redirect()->route('employers.index')->with('success','Employer created successfully.');
     }
 
     /**
@@ -37,7 +46,7 @@ class Admin_EmployerController extends Controller
      */
     public function show(Employer $employer)
     {
-        //
+        return view('employers.show',compact('employer'));
     }
 
     /**
@@ -45,7 +54,7 @@ class Admin_EmployerController extends Controller
      */
     public function edit(Employer $employer)
     {
-        //
+        return view('employers.edit',compact('employer'));
     }
 
     /**
@@ -53,7 +62,14 @@ class Admin_EmployerController extends Controller
      */
     public function update(UpdateEmployerRequest $request, Employer $employer)
     {
-        //
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $employer->update($request->all());
+
+        return redirect()->route('employers.index')->with('success','Employer updated successfully');
     }
 
     /**
@@ -61,6 +77,9 @@ class Admin_EmployerController extends Controller
      */
     public function destroy(Employer $employer)
     {
-        //
+        $employer->delete();
+
+        return redirect()->route('employers.index')
+            ->with('success','Employer deleted successfully');
     }
 }
