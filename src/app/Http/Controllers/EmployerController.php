@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEmployerRequest;
 use App\Http\Requests\UpdateEmployerRequest;
 use App\Models\Employer;
+use Illuminate\Support\Facades\Hash;
 
 class EmployerController extends Controller
 {
@@ -13,7 +14,8 @@ class EmployerController extends Controller
      */
     public function index()
     {
-        //
+        $employers = Employer::all();
+        return view('employees_list', ['employees' => $employers, 'title' => 'Employers']); 
     }
 
     /**
@@ -29,7 +31,15 @@ class EmployerController extends Controller
      */
     public function store(StoreEmployerRequest $request)
     {
-        //
+        $employer = new Employer;
+        $employer->email = $request->email;
+
+        $hashed_password = Hash::make($request->password);
+        $employer->password = $hashed_password;
+        $employer->save();
+
+        // TODO: Add redirection page
+        return redirect('');
     }
 
     /**
@@ -37,7 +47,12 @@ class EmployerController extends Controller
      */
     public function show(Employer $employer)
     {
-        //
+        $empl_id = $employer->id;
+        $requested_employer = Employer::all()->find($empl_id);
+        return view('employer_profile',  [
+            'title' => $requested_employer->email,
+            'employer' => $requested_employer
+        ]);
     }
 
     /**
@@ -53,7 +68,14 @@ class EmployerController extends Controller
      */
     public function update(UpdateEmployerRequest $request, Employer $employer)
     {
-        //
+        $email = $employer->email;
+        $cur_employer = Employer::all()->find($email);
+        $hashed_password = Hash::make($request->password);
+
+        // TODO: Look at password warning
+        $cur_employer->password = $hashed_password;
+        $cur_employer->save();
+        // TODO: Add redirect to employer's page
     }
 
     /**
@@ -61,6 +83,6 @@ class EmployerController extends Controller
      */
     public function destroy(Employer $employer)
     {
-        //
+        $employer->delete();
     }
 }

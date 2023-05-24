@@ -22,7 +22,13 @@ class ComposerAutoloaderInitda12f51b38bba5b59c4733884d5e773f
             return self::$loader;
         }
 
+<<<<<<< HEAD
         spl_autoload_register(array('ComposerAutoloaderInitda12f51b38bba5b59c4733884d5e773f', 'loadClassLoader'), true, true);
+=======
+        require __DIR__ . '/platform_check.php';
+
+        spl_autoload_register(array('ComposerAutoloaderInit74464a1ba1ba1c1aa2107ff8f717e29b', 'loadClassLoader'), true, true);
+>>>>>>> 1c5ef48b560fdf7cb2bc7034832a0df9c532c15a
         self::$loader = $loader = new \Composer\Autoload\ClassLoader(\dirname(__DIR__));
         spl_autoload_unregister(array('ComposerAutoloaderInitda12f51b38bba5b59c4733884d5e773f', 'loadClassLoader'));
 

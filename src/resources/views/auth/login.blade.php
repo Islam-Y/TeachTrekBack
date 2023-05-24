@@ -1,5 +1,9 @@
 @extends('layout.app')
+<<<<<<< HEAD
 @section('title', 'Авторизация')
+=======
+
+>>>>>>> 1c5ef48b560fdf7cb2bc7034832a0df9c532c15a
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
