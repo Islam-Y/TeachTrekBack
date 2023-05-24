@@ -1,6 +1,7 @@
 <?php
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 use App\Http\Controllers\Candidate_educationController;
@@ -16,14 +17,16 @@ use App\Http\Controllers\Organization_socialController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\VacancyController;
 >>>>>>> 8260005bd062841d7847842df39380f8ac167db6
+=======
+use App\Http\Controllers\IndexController;
+>>>>>>> 2a4f1f39ce1ad1c9b8c06149d8c35a88ef8f9756
 use Illuminate\Support\Facades\Route;
 
-Route::resource('candidate_education', Candidate_educationController::class);
 
-Route::resource('candidate_experience', Candidate_experienceController::class);
 
-Route::resource('candidate_full_name', Candidate_full_nameController::class);
+Route::get('/', [IndexController::class, 'index']);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 
@@ -32,25 +35,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 =======
 Route::resource('candidate_info', Candidate_infoController::class);
+=======
+>>>>>>> 2a4f1f39ce1ad1c9b8c06149d8c35a88ef8f9756
 
-Route::resource('candidate_social', Candidate_socialController::class);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('candidate', CandidateController::class);
-
-Route::resource('employer_info', Employer_infoController::class);
-
-Route::resource('employer', EmployerController::class);
-
-Route::resource('files', FilesController::class);
-
-Route::resource('organization_social', Organization_socialController::class);
-
-Route::resource('organization', OrganizationController::class);
-
-Route::resource('vacancy', VacancyController::class);
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
+<<<<<<< HEAD
 >>>>>>> 8260005bd062841d7847842df39380f8ac167db6
+=======
+Route::get('/login', [App\Http\Controllers\AuthController::class, 'showLoginForm'])->name('login');
+>>>>>>> 2a4f1f39ce1ad1c9b8c06149d8c35a88ef8f9756
