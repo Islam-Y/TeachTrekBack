@@ -1,15 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-<<<<<<< HEAD
         'pretty_version' => '1.0.0+no-version-set',
         'version' => '1.0.0.0',
         'reference' => NULL,
-=======
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '98ec0960dd78434be9bba9c38dbce8001e74deff',
->>>>>>> 1c5ef48b560fdf7cb2bc7034832a0df9c532c15a
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -377,15 +371,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-<<<<<<< HEAD
             'pretty_version' => '1.0.0+no-version-set',
             'version' => '1.0.0.0',
             'reference' => NULL,
-=======
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '98ec0960dd78434be9bba9c38dbce8001e74deff',
->>>>>>> 1c5ef48b560fdf7cb2bc7034832a0df9c532c15a
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -736,8 +724,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '3.0.0',
-                1 => '1.0|2.0|3.0',
+                0 => '1.0|2.0|3.0',
+                1 => '3.0.0',
             ),
         ),
         'psr/simple-cache' => array(
@@ -951,18 +939,18 @@
             'dev_requirement' => true,
         ),
         'spatie/ignition' => array(
-            'pretty_version' => '1.7.0',
-            'version' => '1.7.0.0',
-            'reference' => 'f747d83c6d7cb6229b462f3ddbb3a82dc0db0f78',
+            'pretty_version' => '1.8.0',
+            'version' => '1.8.0.0',
+            'reference' => 'ad13a6792992411e05d3d3b293e26bdf9f9a7321',
             'type' => 'library',
             'install_path' => __DIR__ . '/../spatie/ignition',
             'aliases' => array(),
             'dev_requirement' => true,
         ),
         'spatie/laravel-ignition' => array(
-            'pretty_version' => '2.1.2',
-            'version' => '2.1.2.0',
-            'reference' => '2f99fa6b732a6049e78ed34e4608ce589605ae54',
+            'pretty_version' => '2.1.3',
+            'version' => '2.1.3.0',
+            'reference' => '35711943d4725aa80f8033e4f1cb3a6775530b25',
             'type' => 'library',
             'install_path' => __DIR__ . '/../spatie/laravel-ignition',
             'aliases' => array(),
