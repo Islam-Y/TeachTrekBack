@@ -15,7 +15,7 @@ class Employer extends Model
         'email', 'password'
     ];
 
-    public function employer_info(): HasOne
+    public function info(): HasOne
     {
         return $this->hasOne(employer_info::class);
     }

@@ -54,15 +54,10 @@ class CandidateController extends Controller
     public function show(int $id)
     {
         $candidate = Candidate::where('id', $id)->first();
-        $candidate_fn = candidate_full_name::where('candidate_id', 1)->first();
-        $fn_id = $candidate_fn->id;
-        $candidate_info = candidate_info::where('candidate_full_name_id', 1)->first();
 
         return view('main.candidate_profile', [
             'title' => $candidate,
-            'candidate' => $candidate,
-            'candidate_fn' => $candidate_fn,
-            'candidate_info' => $candidate_info
+            'candidate' => $candidate
         ]);
     }
 

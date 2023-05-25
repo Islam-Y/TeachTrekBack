@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEmployerRequest;
 use App\Http\Requests\UpdateEmployerRequest;
-use App\Models\Employer;
+use App\Models\employer;
 use Illuminate\Support\Facades\Hash;
 
 class EmployerController extends Controller
@@ -14,8 +14,8 @@ class EmployerController extends Controller
      */
     public function index()
     {
-        $employers = Employer::all();
-        return view('employees_list', ['employees' => $employers, 'title' => 'Employers']); 
+        $employers = employer::all();
+        return view('main.employers_list', ['employers' => $employers, 'title' => 'Employers']); 
     }
 
     /**
@@ -45,12 +45,11 @@ class EmployerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Employer $employer)
+    public function show(int $id)
     {
-        $empl_id = $employer->id;
-        $requested_employer = Employer::all()->find($empl_id);
-        return view('employer_profile',  [
-            'title' => $requested_employer->email,
+        $requested_employer = Employer::where('id', $id)->first();
+        return view('main.employer_profile',  [
+            'title' => $requested_employer,
             'employer' => $requested_employer
         ]);
     }

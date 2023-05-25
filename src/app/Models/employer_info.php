@@ -14,7 +14,8 @@ class Employer_info extends Model
         'name', 'surname', 'patronymic', 'employer_id'
     ];
 
-    public function employers(){
-        $this->hasMany(Employer::class);
+    public function employers()
+    {
+        $this->belongsTo(Employer::class);
     }
 }
