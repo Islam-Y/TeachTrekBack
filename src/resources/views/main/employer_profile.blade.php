@@ -1,9 +1,7 @@
 @extends('main.base')
 
-@section('title')
-<title>{{ $employer->info->surname}}</title>
+@section('title', $employer->info->surname)
 
-@endsection
 @section('content')
 <p>{{$employer}}</p>
 <p>{{$employer->info->name}}</p>

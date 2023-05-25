@@ -1,8 +1,7 @@
 @extends('layout.app')
 @section('title', 'Главная страница Teach Trek')
 @section('content')
-    @include('partials.header')
-
+@include('partials.header')
 
 <main class="main-hero">
     <section class="hero">
@@ -86,8 +85,8 @@
 
                 <ul class="nested-list">
 
-                    <li class="nested-list-item"><a href=#>Вакансии</a></li>
-                    <li class="nested-list-item"><a href=#>Организации</a></li>
+                    <li class="nested-list-item"><a href="{{route ('vacancy_list')}}">Вакансии</a></li>
+                    <li class="nested-list-item"><a href="{{route ('organization_list')}}">Организации</a></li>
 
                 </ul>
 

@@ -1,4 +1,6 @@
-@extends('main.base')
+@extends('layout.app')
+@section('content')
+    @include('partials.header')
 
 @section('title')
 <title>{{ $candidate->fullName->surname}}</title>
