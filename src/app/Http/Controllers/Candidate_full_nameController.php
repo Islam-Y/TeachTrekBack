@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCandidate_full_nameRequest;
 use App\Http\Requests\UpdateCandidate_full_nameRequest;
-use App\Models\Candidate_full_name;
+use App\Models\candidate_full_name;
 
 class Candidate_full_nameController extends Controller
 {
@@ -13,7 +13,8 @@ class Candidate_full_nameController extends Controller
      */
     public function index()
     {
-        //
+        $candidates_fn = candidate_full_name::all();
+        return view('candidates_list', ["candidates_fn" => $candidates_fn]);
     }
 
     /**

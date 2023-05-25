@@ -38,7 +38,7 @@ class EmployerController extends Controller
         $employer->password = $hashed_password;
         $employer->save();
 
-        // TODO: Add redirection page
+        // TODO: Add redirection page to employer's page
         return redirect('');
     }
 

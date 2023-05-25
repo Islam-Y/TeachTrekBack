@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
 
 class Candidate_full_name extends Model
 {
@@ -15,6 +17,11 @@ class Candidate_full_name extends Model
     ];
 
     public function candidates(){
-        $this->hasMany(Candidate::class);
+        $this->belongsTo(Candidate::class);
     }
-}
+
+    public function info(): HasOne
+    {
+        return $this->hasOne(candidate_info::class);
+    }
+}   

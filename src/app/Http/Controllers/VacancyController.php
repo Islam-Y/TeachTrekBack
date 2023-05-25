@@ -13,7 +13,8 @@ class VacancyController extends Controller
      */
     public function index()
     {
-        //
+        $vacancies = Vacancy::all();
+        return view('vacancies_list', ['vacancies' => $vacancies, 'title' => 'Employers']); 
     }
 
     /**
@@ -29,7 +30,16 @@ class VacancyController extends Controller
      */
     public function store(StoreVacancyRequest $request)
     {
-        //
+        $request->validate([
+            'name' => 'required', 'salary' => 'required',
+            'city_vacancy' => 'required', 'underground' => 'required',
+            'description' => 'required', 'employer_id' => 'required',
+            'duties' => 'required', 'requirements' => 'required',
+            'advantages_vacancy' => 'required',
+        ]);
+        $vacancy = Vacancy::create($request->all());
+        // TODO: Add redirect to created vacancy's page
+        return redirect('');
     }
 
     /**

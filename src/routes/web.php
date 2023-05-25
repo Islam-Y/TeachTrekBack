@@ -7,13 +7,11 @@ use App\Http\Controllers\CandidateController;
 
 Route::get('/', [IndexController::class, 'index']);
 
-
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/login', [App\Http\Controllers\AuthController::class, 'showLoginForm'])->name('login');
 
 Route::get('/register', [App\Http\Controllers\AuthController::class, 'showRegisterForm'])->name('register');
 
-Route::post('/register_process', [App\Http\Controllers\AuthController::class, 'register'])->name('register_process');
-
-Route::get('candidate/list', [CandidateController::class, 'index'])->name('candidate_list');
+Route::get('/candidate/list', [CandidateController::class, 'index'])->name('candidate_list');
+Route::get('/candidate/{id}', [CandidateController::class, 'show'])->name('candidate_profile');

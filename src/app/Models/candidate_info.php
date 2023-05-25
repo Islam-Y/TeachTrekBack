@@ -14,11 +14,13 @@ class Candidate_info extends Model
         'floor', 'profession', 'specialization', 'city_candidate', 'description', 'file_candidate_id', 'photo_id', 'candidate_full_name_id'
     ];
 
-    public function candidates_full_name(){
-        $this->hasMany(Candidate_full_name::class);
+    public function candidates_full_name()
+    {
+        $this->belongsTo(Candidate_full_name::class);
     }
 
-    public function files(){
+    public function files()
+    {
         $this->hasMany(File::class)->orderBy("created_at");
     }
 }

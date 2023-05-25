@@ -7,7 +7,8 @@ use App\Http\Requests\StoreCandidateRequest;
 use App\Http\Requests\UpdateCandidateRequest;
 use App\Models\candidate;
 use Illuminate\Support\Facades\Hash;
-
+use App\Models\candidate_full_name;
+use App\Models\candidate_info;
 
 class CandidateController extends Controller
 {
@@ -17,7 +18,7 @@ class CandidateController extends Controller
     public function index()
     {
         $candidates = Candidate::all();
-        return view('candidates_list', ['candidates' => $candidates, 'title' => 'Candidates']);
+        return view('main.candidates_list', ['candidates' => $candidates, 'title' => 'Candidates']);
     }
 
     /**
@@ -32,6 +33,10 @@ class CandidateController extends Controller
      */
     public function store(StoreCandidateRequest $request)
     {
+        $request->validate([
+            "email" => "required",
+            "password" => "required"
+        ]);
         $candidate = new Candidate;
         $candidate->email = $request->email;
 
@@ -46,13 +51,18 @@ class CandidateController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Candidate $candidate)
+    public function show(int $id)
     {
-        $email = $candidate->email;
-        $requested_candidate = Candidate::all()->find($email);
-        return view('candidate_profile',  [
-            'title' => $requested_candidate->email,
-            'candidate' => $requested_candidate
+        $candidate = Candidate::where('id', $id)->first();
+        $candidate_fn = candidate_full_name::where('candidate_id', 1)->first();
+        $fn_id = $candidate_fn->id;
+        $candidate_info = candidate_info::where('candidate_full_name_id', 1)->first();
+
+        return view('main.candidate_profile', [
+            'title' => $candidate,
+            'candidate' => $candidate,
+            'candidate_fn' => $candidate_fn,
+            'candidate_info' => $candidate_info
         ]);
     }
 
@@ -69,6 +79,9 @@ class CandidateController extends Controller
      */
     public function update(UpdateCandidateRequest $request, Candidate $candidate)
     {
+        $request->validate([
+            "password" => "required"
+        ]);
         $email = $candidate->email;
         $cur_candidate = Candidate::all()->find($email);
         $hashed_password = Hash::make($request->password);

@@ -15,8 +15,18 @@ class Candidate extends Model
         'email', 'password'
     ];
 
-    public function candidateFullName(): HasOne
+    public function fullName(): HasOne
     {
         return $this->hasOne(candidate_full_name::class);
+    }
+
+    public function info(): HasOne
+    {
+        return $this->hasOne(candidate_info::class);
+    }
+
+    public function social(): HasOne
+    {
+        return $this->hasOne(candidate_social::class);
     }
 }

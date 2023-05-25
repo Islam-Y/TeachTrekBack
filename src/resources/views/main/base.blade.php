@@ -7,7 +7,7 @@
 
     @include('main.styles')
     
-    <title>{{ $title }}</title>
+    @yield('title')
 
 <body>
 

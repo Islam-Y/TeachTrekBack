@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Candidate_social extends Model
 {
@@ -22,6 +23,6 @@ class Candidate_social extends Model
 
     public function candidates()
     {
-        $this->hasMany(Candidate::class);
+        $this->belongsTo(Candidate::class);
     }
 }
