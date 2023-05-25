@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVacancyRequest;
 use App\Http\Requests\UpdateVacancyRequest;
-use App\Models\Vacancy;
+use App\Models\vacancy;
 
 class VacancyController extends Controller
 {
@@ -13,8 +13,8 @@ class VacancyController extends Controller
      */
     public function index()
     {
-        $vacancies = Vacancy::all();
-        return view('vacancies_list', ['vacancies' => $vacancies, 'title' => 'Employers']); 
+        $vacancies = vacancy::all();
+        return view('main.vacancy_list', ['vacancies' => $vacancies, 'title' => 'Vacancy']); 
     }
 
     /**

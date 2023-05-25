@@ -1,11 +1,8 @@
-@extends('layout.app')
-
-@section('content')
-@include('partials.header')
+@extends('main.base')
 
 @push('styles')
 <link href="{{ asset('css/candidates.css') }}" rel="stylesheet" />
-@endpush
+@endpush    
 
 @section('title')
 $title
