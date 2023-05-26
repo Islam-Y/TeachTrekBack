@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Mail\ForgotPassword;
 use App\Models\Candidate;
 //use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -78,11 +79,12 @@ class AuthController extends Controller
         ]);
 
         if($candidate) {
-            //event(new Registered($candidates));
+          //  event(new Registered($candidate));
 
             auth("web")->login($candidate);
         }
 
         return redirect(route("home"));
+
     }
 }

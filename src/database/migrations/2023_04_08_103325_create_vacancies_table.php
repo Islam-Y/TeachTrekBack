@@ -18,12 +18,11 @@ return new class extends Migration
             $table->string('city_vacancy');
             $table->string('underground')->nullable();
             $table->text('description');
-            $table->unsignedBigInteger('employer_id');
             $table->text('duties');
             $table->text('requirements');
             $table->text('advantages_vacancy');
 
-            $table->foreign('employer_id')->references('id')->on('employers');
+            $table->foreignId('employer_id')->constrained('employers');
             $table->timestamps();
         });
     }

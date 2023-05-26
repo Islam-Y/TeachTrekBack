@@ -1,30 +1,31 @@
 <?php
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\VacancyController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', [IndexController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware("guest:web")->group(function () {
-    Route::get('/login', [\App\Http\Controllers\AuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/login_process', [\App\Http\Controllers\AuthController::class, 'login'])->name('login_process');
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login_process', [AuthController::class, 'login'])->name('login_process');
 
-    Route::get('/register', [\App\Http\Controllers\AuthController::class, 'showRegisterForm'])->name('register');
-    Route::post('/register_process', [\App\Http\Controllers\AuthController::class, 'register'])->name('register_process');
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register_process', [AuthController::class, 'register'])->name('register_process');
 
-    Route::get('/forgot', [\App\Http\Controllers\AuthController::class, 'showForgotForm'])->name('forgot');
-    Route::post('/forgot_process', [\App\Http\Controllers\AuthController::class, 'forgot'])->name('forgot_process');
+    Route::get('/forgot', [AuthController::class, 'showForgotForm'])->name('forgot');
+    Route::post('/forgot_process', [AuthController::class, 'forgot'])->name('forgot_process');
 });
 
-Route::get('/candidate/list', [CandidateController::class, 'index'])->name('candidate_list');
-Route::get('/candidate/{id}', [CandidateController::class, 'show'])->name('candidate_profile');
+Route::get('/user/list', [UserController::class, 'index'])->name('user_list');
+Route::get('/user/{id}', [UserController::class, 'show'])->name('user_profile');
 
 Route::get('/employer/list', [EmployerController::class, 'index'])->name('employer_list');
 Route::get('/employer/{id}', [EmployerController::class, 'show'])->name('employer_profile');

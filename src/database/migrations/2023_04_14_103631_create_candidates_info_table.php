@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreignId('candidate_full_name_id')->constrained('candidates_full_name');
 
             $table->foreign('file_candidate_id')->references('id')->on('files');
-            $table->foreign('photo_id')->references('id')->on('files');
+            $table->foreign('photo_id')->references('id')->on('photos');
             $table->timestamps();
         });
     }

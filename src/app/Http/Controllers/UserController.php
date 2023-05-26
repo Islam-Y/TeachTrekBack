@@ -2,23 +2,21 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Http\Requests\StoreCandidateRequest;
-use App\Http\Requests\UpdateCandidateRequest;
-use App\Models\candidate;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
+use App\Models\User;
+//use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Models\candidate_full_name;
-use App\Models\candidate_info;
 
-class CandidateController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $candidates = Candidate::all();
-        return view('main.candidates_list', ['candidates' => $candidates, 'title' => 'Candidates']);
+        $users = User::all();
+        return view('main.users_list', ['users' => $users, 'title' => 'Users']);
     }
 
     /**
@@ -31,18 +29,18 @@ class CandidateController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCandidateRequest $request)
+    public function store(StoreUserRequest $request)
     {
         $request->validate([
             "email" => "required",
             "password" => "required"
         ]);
-        $candidate = new Candidate;
-        $candidate->email = $request->email;
+        $user = new User;
+        $user->email = $request->email;
 
         $hashed_password = Hash::make($request->password);
-        $candidate->password = $hashed_password;
-        $candidate->save();
+        $user->password = $hashed_password;
+        $user->save();
 
         // TODO: Add redirection page
         return redirect('');
@@ -53,18 +51,18 @@ class CandidateController extends Controller
      */
     public function show(int $id)
     {
-        $candidate = Candidate::where('id', $id)->first();
+        $user = User::where('id', $id)->first();
 
-        return view('main.candidate_profile', [
-            'title' => $candidate,
-            'candidate' => $candidate
+        return view('main.user_profile', [
+            'title' => $user,
+            'user' => $user
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Candidate $candidate)
+    public function edit(User $user)
     {
         //
     }
@@ -72,25 +70,25 @@ class CandidateController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCandidateRequest $request, Candidate $candidate)
+    public function update(UpdateUserRequest $request, User $user)
     {
         $request->validate([
             "password" => "required"
         ]);
-        $email = $candidate->email;
-        $cur_candidate = Candidate::all()->find($email);
+        $email = $user->email;
+        $cur_user = User::all()->find($email);
         $hashed_password = Hash::make($request->password);
 
         // TODO: Look at password warning
-        $cur_candidate->password = $hashed_password;
-        $cur_candidate->save();
+        $cur_user->password = $hashed_password;
+        $cur_user->save();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Candidate $candidate)
+    public function destroy(User $user)
     {
-        $candidate->delete();
+        $user->delete();
     }
 }

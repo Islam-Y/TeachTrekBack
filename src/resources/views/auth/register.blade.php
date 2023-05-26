@@ -10,11 +10,11 @@
             <form action="{{ route("register_process") }}" class="space-y-5 mt-5" method="POST">
                 @csrf
 
-                <input name="name" type="text" class="w-full h-12 border border-gray-800 rounded px-3 @error('name') border-red-500 @enderror" placeholder="Имя" />
+{{--                <input name="name" type="text" class="w-full h-12 border border-gray-800 rounded px-3 @error('name') border-red-500 @enderror" placeholder="Имя" />--}}
 
-                @error('name')
-                <p class="text-red-500">{{ $message }}</p>
-                @enderror
+{{--                @error('name')--}}
+{{--                <p class="text-red-500">{{ $message }}</p>--}}
+{{--                @enderror--}}
 
                 <input name="email" type="text" class="w-full h-12 border border-gray-800 rounded px-3 @error('email') border-red-500 @enderror" placeholder="Email" />
 

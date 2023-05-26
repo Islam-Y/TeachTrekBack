@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('candidate_full_name_id')->constrained('candidates_full_name');
 
 
-            $table->foreign('email')->references('email')->on('candidates');
+            $table->foreign('email')->references('email')->on('users');
             $table->timestamps();
         });
     }
