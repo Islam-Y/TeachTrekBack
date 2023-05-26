@@ -12,11 +12,29 @@ use App\Http\Controllers\Admin_FileController;
 use App\Http\Controllers\Admin_Organization_socialController;
 use App\Http\Controllers\Admin_OrganizationController;
 use App\Http\Controllers\Admin_VacancyController;
+use App\Http\Controllers\AdminUserController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('login', [\App\Http\Controllers\Admin_AuthController::class, 'index'])->name('login');
 Route::post('login_process', [\App\Http\Controllers\Admin_AuthController::class, 'login'])->name('login_process');
+
+
+Route::get('/', function () {
+    return redirect('/admin/posts');
+});
+
+Route::middleware("guest:admin")->group(function() {
+    Route::get('login', [\App\Http\Controllers\Admin_AuthController::class, 'index'])->name('login');
+    Route::post('login_process', [\App\Http\Controllers\Admin_AuthController::class, 'login'])->name('login_process');
+});
+
+Route::middleware("auth:admin")->group(function() {
+    Route::get('logout', [\App\Http\Controllers\Admin_AuthController::class, 'logout'])->name('logout');
+
+    Route::resource('admin_users', \App\Http\Controllers\AdminUserController::class);
+    Route::resource('posts', \App\Http\Controllers\Admin_PostController::class);
+});
 
 
 Route::middleware("auth:admin")->group(function (){

@@ -12,9 +12,16 @@ Route::get('/', [IndexController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/login', [App\Http\Controllers\AuthController::class, 'showLoginForm'])->name('login');
+Route::middleware("guest:web")->group(function () {
+    Route::get('/login', [\App\Http\Controllers\AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login_process', [\App\Http\Controllers\AuthController::class, 'login'])->name('login_process');
 
-Route::get('/register', [App\Http\Controllers\AuthController::class, 'showRegisterForm'])->name('register');
+    Route::get('/register', [\App\Http\Controllers\AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register_process', [\App\Http\Controllers\AuthController::class, 'register'])->name('register_process');
+
+    Route::get('/forgot', [\App\Http\Controllers\AuthController::class, 'showForgotForm'])->name('forgot');
+    Route::post('/forgot_process', [\App\Http\Controllers\AuthController::class, 'forgot'])->name('forgot_process');
+});
 
 Route::get('/candidate/list', [CandidateController::class, 'index'])->name('candidate_list');
 Route::get('/candidate/{id}', [CandidateController::class, 'show'])->name('candidate_profile');

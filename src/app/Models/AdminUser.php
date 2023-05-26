@@ -13,4 +13,10 @@ class AdminUser extends Model
     protected $fillable = [
        'name', 'email', 'password'
     ];
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
 }
