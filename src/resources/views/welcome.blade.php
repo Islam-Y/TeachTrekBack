@@ -7,7 +7,7 @@
     <section class="hero">
         <div class="selector-main">
             <a class="boss" href="#"><h2>Работодателям</h2></a>
-            <a class="user active" href="#"><h2>Специалистам</h2></a>
+            <a class="candidate active" href="#"><h2>Специалистам</h2></a>
         </div>
         <div class="title">
             <h1>
@@ -23,7 +23,7 @@
 
                         </form>
 
-                        <form class="user-form active" action="" method="get">
+                        <form class="candidate-form active" action="" method="get">
 
                             <input name="s" placeholder="Специалист мечты" type="search">
                             <button type="submit" value=""><img src="img/search.svg" alt="Поиск"></button>
@@ -85,8 +85,8 @@
 
                 <ul class="nested-list">
 
-                    <li class="nested-list-item"><a href="{{route ('vacancy_list')}}">Вакансии</a></li>
-                    <li class="nested-list-item"><a href="{{route ('organization_list')}}">Организации</a></li>
+                    <li class="nested-list-item"><a href=#>Вакансии</a></li>
+                    <li class="nested-list-item"><a href=#>Организации</a></li>
 
                 </ul>
 
@@ -131,8 +131,8 @@
             </li>
         </ul>
     </div>
-    <script src="toggle_user.js"></script>
-</footer>
 
+</footer>
+<script src="toggle_user.js"></script>
 
 @endsection

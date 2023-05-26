@@ -1,3 +1,18 @@
+body {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    background-color: #F5F5F5;
+    margin:0;
+}
+
+h1, h2, h3, p, ul{
+    margin: 0;
+    padding: 0;
+}
+
 .button-write {
     cursor: pointer;
     font-size: 16px;
