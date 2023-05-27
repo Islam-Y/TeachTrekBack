@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return redirect('/admin/candidates');
+    return redirect('/admin/users');
 });
 
 Route::middleware("guest:admin")->group(function() {
