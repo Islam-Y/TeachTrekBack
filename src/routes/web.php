@@ -9,9 +9,14 @@ use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\AuthController;
 
-Route::get('/', [IndexController::class, 'index']);
+Route::get('/', [IndexController::class, 'index'])->name('home');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+
+Route::middleware("auth:web")->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
 
 Route::middleware("guest:web")->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

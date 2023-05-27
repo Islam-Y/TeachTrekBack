@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-//use App\Jobs\ForgotCandidateEmailJob;
+//use App\Jobs\ForgotUserEmailJob;
 use App\Mail\ForgotPassword;
-use App\Models\Candidate;
-//use Illuminate\Auth\Events\Registered;
+use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -51,17 +50,17 @@ class AuthController extends Controller
     public function forgot(Request $request)
     {
         $data = $request->validate([
-            "email" => ["required", "email", "string", "exists:candidates"],
+            "email" => ["required", "email", "string", "exists:users"],
         ]);
 
-        $candidate = Candidate::where(["email" => $data["email"]])->first();
+        $user = User::where(["email" => $data["email"]])->first();
 
         $password = uniqid();
 
-        $candidate->password = bcrypt($password);
-        $candidate->save();
+        $user->password = bcrypt($password);
+        $user->save();
 
-        Mail::to($candidate)->send(new ForgotPassword($password));
+        Mail::to($user)->send(new ForgotPassword($password));
 
         return redirect(route("home"));
     }
@@ -69,22 +68,21 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $data = $request->validate([
-            "email" => ["required", "email", "string", "unique:candidates,email"],
+            "email" => ["required", "email", "string", "unique:users,email"],
             "password" => ["required", "confirmed"]
         ]);
 
-        $candidate = Candidate::create([
-            "email" => $data["email"],
-            "password" => bcrypt($data["password"])
-        ]);
+        $user = new User();
+        $user->email = $data["email"];
+        $user->password = bcrypt($data["password"]);
+        $user->save();
 
-        if($candidate) {
-          //  event(new Registered($candidate));
+        if ($user) {
+            event(new Registered($user));
 
-            auth("web")->login($candidate);
+            auth("web")->login($user);
         }
 
         return redirect(route("home"));
-
     }
 }
