@@ -8,12 +8,12 @@
             @if (auth()->check())
                 <a
                     style="
-    font-family: 'Work Sans', sans-serif;
-    font-size: 20px;
-    line-height: 30px;
-    color: #FFFFFF;
-    text-decoration: none;
-    font-weight: 500;"
+            font-family: 'Work Sans', sans-serif;
+            font-size: 20px;
+            line-height: 30px;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 500;"
                     href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     Выйти
                 </a>
@@ -31,6 +31,7 @@
         <div class="header-down">
             <a href="{{route ('vacancy_list')}}">Вакансии</a>
             <a href="{{route ('organization_list')}}">Организации</a>
+            <a href="{{route ('user_list')}}">Соискатели</a>
             <a href="#">Контакты</a>
         </div>
     </nav>

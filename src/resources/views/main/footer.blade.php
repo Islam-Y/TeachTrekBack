@@ -44,19 +44,22 @@
                         <ul class="social-list">
                             <li class="social-list-item">
                                 <a class="telegram-a" href="#">
-                                    <img src="img/telegram_logo.svg" class="telegram-img" alt="Telegram" width="30px" height="30px">
+                                    <img src="img/telegram_logo.svg" class="telegram-img" alt="Telegram" width="30px"
+                                        height="30px">
                                 </a>
                             </li>
 
                             <li class="social-list-item">
                                 <a class="whatsapp-a" href="#">
-                                    <img src="img/whats-app_logo.svg" class="whatsapp-img" alt="WhatsApp" width="30px" height="30px">
+                                    <img src="img/whats-app_logo.svg" class="whatsapp-img" alt="WhatsApp" width="30px"
+                                        height="30px">
                                 </a>
                             </li>
 
                             <li class="social-list-item">
                                 <a class="VK-a" href="#">
-                                    <img src="img/VK-footer.png" class="VK-img" alt="ВКонтакте" width="38px" height="30px">
+                                    <img src="img/VK-footer.png" class="VK-img" alt="ВКонтакте" width="38px"
+                                        height="30px">
                                 </a>
                             </li>
                         </ul>
