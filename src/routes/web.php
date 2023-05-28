@@ -36,7 +36,7 @@ Route::get('/employer/list', [EmployerController::class, 'index'])->name('employ
 Route::get('/employer/{id}', [EmployerController::class, 'show'])->name('employer_profile');
 
 Route::get('/vacancy/list', [VacancyController::class, 'index'])->name('vacancy_list');
-Route::get('/vacancy/{id}', [VacancyController::class, 'show'])->name('employevacancy_profile');
+Route::get('/vacancy/{id}', [VacancyController::class, 'show'])->name('vacancy');
 
 Route::get('/organization/list', [OrganizationController::class, 'index'])->name('organization_list');
 Route::get('/organization/{id}', [OrganizationController::class, 'show'])->name('organization_profile');
