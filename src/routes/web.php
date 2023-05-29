@@ -9,6 +9,8 @@ use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\AuthController;
 
+require __DIR__.'/admin.php';
+
 Route::get('/', [IndexController::class, 'index'])->name('home');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

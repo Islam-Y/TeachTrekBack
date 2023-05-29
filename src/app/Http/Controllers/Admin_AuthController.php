@@ -8,6 +8,7 @@ class Admin_AuthController extends Controller
 {
     public function index()
     {
+
         return view("admin.auth.login");
     }
 
@@ -19,7 +20,7 @@ class Admin_AuthController extends Controller
         ]);
 
         if(auth("admin")->attempt($data)) {
-            return redirect(route("admin.candidates.index"));
+            return redirect(route("admin.users.index"));
         }
 
         return redirect(route("admin.login"))->withErrors(["email" => "Пользователь не найден, либо данные введены не правильно"]);

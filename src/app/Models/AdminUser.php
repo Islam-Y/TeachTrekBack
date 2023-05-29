@@ -3,15 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class AdminUser extends Model
+class AdminUser extends Authenticatable
 {
     use HasFactory;
     protected $table = 'admin_users';
 
+    protected $guard = 'admin';
+
     protected $fillable = [
-       'name', 'email', 'password'
+       'email', 'password'
     ];
 
     public function setPasswordAttribute($value)
