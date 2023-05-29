@@ -12,20 +12,29 @@ class Organization extends Model
 
     protected $fillable = [
         'name', 'type', 'employer_id',
-        'city_organization', 'vacancy_id',
+        'city_organization', ,
         'photo_id', 'number_employees', 'number_students',
         'description', 'description_mini', 'file_organization_id'
     ];
 
-    public function employers(){
-        $this->hasMany(Employer::class);
+
+    public function social()
+    {
+        return $this->hasMany(organization_social::class);
     }
 
-    public function vacancies(){
-        $this->hasMany(Vacancy::class)->orderBy("created_at");
+    public function employers()
+    {
+        return $this->hasMany(Employer::class);
     }
 
-    public function files(){
-        $this->hasMany(File::class)->orderBy("created_at");
+    public function vacancies()
+    {
+        return $this->hasMany(vacancy::class)->orderBy("created_at");
+    }
+
+    public function files()
+    {
+        return $this->hasMany(File::class)->orderBy("created_at");
     }
 }

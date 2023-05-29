@@ -11,3 +11,5 @@
     @endforeach
 
 @endsection
+
+@include('partials.footer')

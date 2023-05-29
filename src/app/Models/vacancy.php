@@ -11,11 +11,18 @@ class Vacancy extends Model
     protected $table = 'vacancies';
 
     protected $fillable = [
-        'name', 'salary', 'city_vacancy', 'underground', 'description', 'employer_id', 'duties', 'requirements', 'advantages_vacancy'
+        'name', 'salary', 'city_vacancy', 'underground', 
+        'description', 'employer_id', 'duties', 'requirements', 'advantages_vacancy',
+        'organization_id'
     ];
 
-    public function employers(){
+    public function employers()
+    {
         $this->hasMany(Employer::class);
     }
 
+    public function organizations()
+    {
+        $this->belongsTo(organization::class);
+    }
 }

@@ -15,6 +15,6 @@ class Organization_social extends Model
     ];
 
     public function organizations(){
-        $this->hasMany(Organization::class);
+        return $this->belongsTo(Organization::class);
     }
 }

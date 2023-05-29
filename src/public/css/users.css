@@ -5,10 +5,14 @@ body {
     line-height: 24px;
     color: #000000;
     background-color: #F5F5F5;
-    margin:0;
+    margin: 0;
 }
 
-h1, h2, h3, p, ul{
+h1,
+h2,
+h3,
+p,
+ul {
     margin: 0;
     padding: 0;
 }
@@ -24,41 +28,41 @@ h1, h2, h3, p, ul{
     border: none;
 }
 
-.candidates-item .heart {
+.users-item .heart {
     position: absolute;
     cursor: pointer;
     bottom: 25px;
     left: 140px;
 }
 
-.candidates-item .heart {
+.users-item .heart {
     border: none;
     background-color: rgba(255, 255, 255, 1);
     opacity: 0.6;
 }
 
-.candidates-item .heart img {
+.users-item .heart img {
     display: block;
 }
 
-.candidates-item .heart.active {
+.users-item .heart.active {
     opacity: 0.9;
 }
 
-.candidates-item .heart:hover {
+.users-item .heart:hover {
     opacity: 1;
     cursor: pointer;
 }
 
-.candidates-item button:not(.active) .heart-active {
+.users-item button:not(.active) .heart-active {
     display: none;
 }
 
-.candidates-item .heart.active .heart-active {
+.users-item .heart.active .heart-active {
     display: block;
 }
 
-.candidates-item .heart.active .not-heart-active {
+.users-item .heart.active .not-heart-active {
     display: none;
 }
 
@@ -75,13 +79,13 @@ h1, h2, h3, p, ul{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.search-candidate {
+.search-user {
     width: 64%;
     margin-bottom: 40px;
     position: relative;
 }
 
-.search-candidate input {
+.search-user input {
     background-color: #F2F2F2;
     border-radius: 10px;
     padding: 20px;
@@ -91,7 +95,7 @@ h1, h2, h3, p, ul{
     box-shadow: 0px 14px 18px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.search-candidate button {
+.search-user button {
     border: none;
     border-radius: 10px;
     position: absolute;
@@ -130,7 +134,7 @@ section ul {
     list-style: none;
 }
 
-.candidates-item {
+.users-item {
     position: relative;
     width: 100%;
     display: flex;
@@ -183,19 +187,19 @@ input[type="number"] {
     border: none;
 }
 
-.candidates {
+.users {
     display: flex;
     flex-wrap: wrap;
     width: 970px;
     gap: 16px;
 }
 
-.name-candidate {
+.name-user {
     margin-bottom: 5px;
     max-width: 80%;
 }
 
-.description-mini-candidate {
+.description-mini-user {
     margin-bottom: 10px;
 }
 
@@ -203,6 +207,6 @@ input[type="number"] {
     margin-bottom: 10px;
 }
 
-.description-candidate ul li {
+.description-user ul li {
     margin-bottom: 10px;
 }

@@ -11,30 +11,39 @@ body {
     min-height: 100vh;
 }
 
-h1, h2, h3, p, ul{
+h1,
+h2,
+h3,
+p,
+ul {
     margin: 0;
     padding: 0;
 }
 
-.main-hero{
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+.main-hero {
     flex-grow: 1;
 }
 
-.header-main{
+.header-main {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.header-up button{
+.header-up button {
     cursor: pointer;
     border: none;
     background-color: #0A4209;
 }
 
-.header-down{
+.header-down {
     background-color: #FFFFFF;
 }
 
-.header-down a{
+.header-down a {
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     line-height: 30px;
@@ -43,11 +52,11 @@ h1, h2, h3, p, ul{
     font-weight: 500;
 }
 
-.selector-main a{
+.selector-main a {
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     line-height: 10px;
-    color:#000000;
+    color: #000000;
     text-decoration: none;
 }
 
@@ -57,15 +66,16 @@ h1, h2, h3, p, ul{
     border: none;
 }
 
-.div-input-title form{
+.div-input-title form {
     display: none;
 }
 
-.div-input-title form.active{
+.div-input-title form.active {
     display: block;
 }
 
-.footer-main a, .footer-main .email{
+.footer-main a,
+.footer-main .email {
     font-family: "Work Sans", sans-serif;
     text-decoration: none;
     color: #E2F1D3;
@@ -74,39 +84,39 @@ h1, h2, h3, p, ul{
 }
 
 
-.title h1{
+.title h1 {
     font-size: 82px;
     line-height: 80px;
 }
 
-.statistics{
+.statistics {
     width: 80%;
     font-weight: 500;
     font-size: 30px;
     line-height: 30px;
 }
 
-.value-statistics{
+.value-statistics {
     font-size: 40px;
     line-height: 40px;
     font-weight: 600;
 }
 
-.title .title-1-1{
-    color:#2D6630;
+.title .title-1-1 {
+    color: #2D6630;
 }
 
-.header-main{
+.header-main {
     width: 100%;
     margin-bottom: 16px;
 }
 
-.footer-main{
+.footer-main {
     position: relative;
     flex-shrink: 0;
 }
 
-.header-up{
+.header-up {
     display: flex;
     justify-content: space-between;
     padding-top: 12px;
@@ -116,7 +126,7 @@ h1, h2, h3, p, ul{
     background-color: #0A4209;
 }
 
-.header-down{
+.header-down {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -125,32 +135,32 @@ h1, h2, h3, p, ul{
     padding-bottom: 14px;
 }
 
-.selector-main{
+.selector-main {
     display: flex;
     justify-content: center;
     margin-bottom: 140px;
     width: 100%;
 }
 
-.selector-main .boss{
+.selector-main .boss {
     width: 250px;
     border-width: 3px 0 3px 3px;
-    border-color:#cccccc;
+    border-color: #cccccc;
     border-style: solid;
     background-color: #F5F5F5;
     padding: 15px 12px;
-    text-align:center;
+    text-align: center;
     border-radius: 50px 0px 0px 50px;
 }
 
-.selector-main .candidate{
+.selector-main .candidate {
     border-width: 3px 3px 3px 0;
-    border-color:#cccccc;
+    border-color: #cccccc;
     border-style: solid;
     width: 250px;
     background-color: #F5F5F5;
     padding: 15px 12px;
-    text-align:center;
+    text-align: center;
     border-radius: 0px 50px 50px 0px;
 
 }
@@ -162,20 +172,20 @@ h1, h2, h3, p, ul{
 
 }
 
-.title{
+.title {
     width: 85%;
     margin: 0 auto;
     margin-bottom: 92px;
     /* background-image: url('../img/back-title.svg'); */
 }
 
-.title h1{
+.title h1 {
     margin: 0;
     padding: 0;
 }
 
 
-.title-div{
+.title-div {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -184,17 +194,17 @@ h1, h2, h3, p, ul{
 
 }
 
-.title-div form{
+.title-div form {
     position: relative;
     margin-bottom: 20px;
 }
 
-.div-input-title input{
+.div-input-title input {
     width: 100%;
     background: #f1eee4;
 }
 
-.title input[type="search"]{
+.title input[type="search"] {
     background-color: #ffffff;
 
     border-radius: 10px;
@@ -202,10 +212,10 @@ h1, h2, h3, p, ul{
     width: 550px;
     display: inline-block;
     vertical-align: middle;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.title button[type="submit"]{
+.title button[type="submit"] {
     border-radius: 20px;
     position: absolute;
     top: 25px;
@@ -218,7 +228,8 @@ h1, h2, h3, p, ul{
     padding-bottom: 5px;
 }
 
-.div-input-title input, .div-input-title button{
+.div-input-title input,
+.div-input-title button {
     border: none !important;
     outline: none !important;
 }
@@ -230,28 +241,28 @@ h1, h2, h3, p, ul{
     margin-bottom: 10px;
 }
 
-.title .title-2-1{
+.title .title-2-1 {
     display: flex;
     margin-left: 2.2em;
     margin-bottom: 154px;
 }
 
-.title-2{
+.title-2 {
     margin-right: 25px;
 }
 
-.div-input-title{
+.div-input-title {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
 }
 
-.statistics{
+.statistics {
     width: 100%;
 }
 
-.ul-statistics{
+.ul-statistics {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -262,7 +273,7 @@ h1, h2, h3, p, ul{
 
 }
 
-.ul-statistics-item{
+.ul-statistics-item {
     display: flex;
     width: 230px;
     padding: 10px 10px 10px 10px;
@@ -271,10 +282,10 @@ h1, h2, h3, p, ul{
     border-radius: 50px;
     flex-wrap: wrap;
     background-color: #DCD3CD;
-    box-shadow: 0.4em 0.4em 20px rgba(122,122,122,0.5);
+    box-shadow: 0.4em 0.4em 20px rgba(122, 122, 122, 0.5);
 }
 
-.ul-statistics-item p{
+.ul-statistics-item p {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -282,22 +293,23 @@ h1, h2, h3, p, ul{
     text-align: center;
 }
 
-.ul-statistics-item .value-statistics{
+.ul-statistics-item .value-statistics {
     display: inline-block;
     text-align: center;
 }
 
-.ul-statistics-item .text-statistics{
+.ul-statistics-item .text-statistics {
     display: inline-block;
     margin-bottom: auto;
     align-items: center;
 }
 
-.statistics{
-    margin-bottom: 212px;;
+.statistics {
+    margin-bottom: 212px;
+    ;
 }
 
-.footer-main{
+.footer-main {
     background-color: #0A4209;
     padding-top: 30px;
     padding-bottom: 30px;
@@ -305,7 +317,7 @@ h1, h2, h3, p, ul{
 }
 
 
-.footer-main-ul{
+.footer-main-ul {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -314,33 +326,33 @@ h1, h2, h3, p, ul{
     gap: 80px;
 }
 
-.nested-list{
+.nested-list {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.social-list{
+.social-list {
     margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
 }
 
-.div-footer{
+.div-footer {
     display: flex;
     justify-content: center;
 }
 
-.social-list-item img{
+.social-list-item img {
     margin-right: 18px;
 }
 
-.nested-list .footer-social{
+.nested-list .footer-social {
     position: relative;
 }
 
-.footer-social::before{
+.footer-social::before {
     content: "meejob_team@yandex.ru";
     color: rgba(255, 255, 255, 1);
     font-family: 'Montserrat', sans-serif;

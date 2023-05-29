@@ -129,32 +129,33 @@
 
             </section>
 
-            {{-- @foreach() --}}
-            <article class="job-3">
 
-                <div class="h2-like">
-                    <h2 class="title-3">Учитель информатики</h2>
-                    <button class="heart" type="button"><img class="not-heart-active" src='img/heart.png'
-                            width="30px" height="30px" alt="like"><img class="heart-active"
-                            src='img/heart_active.png' width="30px" height="30px" alt="like"></button>
-                </div>
+            @foreach ($organization->vacancies() as $vacancy)
+                <article class="job-3">
 
-                <p class="main-price">от 30 000 руб.</p>
+                    <div class="h2-like">
+                        <h2 class="title-3">{{ $vacancy->name }}</h2>
+                        <button class="heart" type="button"><img class="not-heart-active" src='img/heart.png'
+                                width="30px" height="30px" alt="like"><img class="heart-active"
+                                src='img/heart_active.png' width="30px" height="30px" alt="like"></button>
+                    </div>
 
-                <ul class="requirements-briefly">
-                    <li class="requirements-briefly-item">Требуемый опыт: 2 года</li>
-                    <li class="requirements-briefly-item">Полная занятость</li>
-                </ul>
-                <ul class="briefly">
-                    <li class="briefly-item">Составление рабочей программы по информатике.</li>
-                    <li class="briefly-item">Проведение уроков информатики в 5-11-х классах.</li>
-                    <li class="briefly-item">Помощь в техническом обеспечении спец. уроков.</li>
-                    <li class="briefly-item">Педагогическое образование (высшее или среднее).</li>
-                </ul>
-                <button class='respond' type="button" name="button-response">Откликнуться</button>
+                    <p class="main-price">от 30 000 руб.</p>
 
-            </article>
-            {{-- @endforeach --}}
+                    <ul class="requirements-briefly">
+                        <li class="requirements-briefly-item">Требуемый опыт: 2 года</li>
+                        <li class="requirements-briefly-item">Полная занятость</li>
+                    </ul>
+                    <ul class="briefly">
+                        <li class="briefly-item">Составление рабочей программы по информатике.</li>
+                        <li class="briefly-item">Проведение уроков информатики в 5-11-х классах.</li>
+                        <li class="briefly-item">Помощь в техническом обеспечении спец. уроков.</li>
+                        <li class="briefly-item">Педагогическое образование (высшее или среднее).</li>
+                    </ul>
+                    <button class='respond' type="button" name="button-response">Откликнуться</button>
+
+                </article>
+                @endforeach
         </div>
 
     </div>

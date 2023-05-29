@@ -17,30 +17,6 @@ ul {
     padding: 0;
 }
 
-
-
-.respond {
-    font-size: 16px;
-    line-height: 20px;
-    padding: 5px 10px;
-    border-radius: 30px;
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(45, 102, 48, 1);
-    border: none;
-}
-
-.respond-filter {
-    margin-top: 8px;
-    font-size: 16px;
-    line-height: 20px;
-    padding: 4px 9px;
-    border-radius: 30px;
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(45, 102, 48, 1);
-    border: none;
-}
-
-
 .header-up button {
     cursor: pointer;
     border: none;
@@ -70,8 +46,8 @@ ul {
         display: none;
     }
 
-    .job {
-        width: auto !important;
+    .candidates {
+        width: 100% !important;
     }
 }
 
@@ -93,11 +69,11 @@ ul {
     margin-bottom: 7px;
 }
 
-.title-2-0 {
+.name-organization {
     line-height: 30px;
 }
 
-.header-2 {
+.header-organization {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -138,14 +114,13 @@ ul {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.search-job {
-    width: 64%;
-    margin-bottom: 40px;
+.search-organization {
+    width: 100%;
+    margin-bottom: 45px;
     position: relative;
 }
 
-.search-job input {
-
+.search-organization input {
     background-color: #F2F2F2;
     border-radius: 10px;
     padding: 20px;
@@ -153,10 +128,9 @@ ul {
     display: inline-block;
     border: none;
     box-shadow: 0px 14px 18px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-
 }
 
-.search-job button {
+.search-organization button {
     border: none;
     border-radius: 10px;
     position: absolute;
@@ -167,20 +141,6 @@ ul {
 
 }
 
-.specification {
-    width: 30%;
-}
-
-.specification select {
-    cursor: pointer;
-    background-color: #F2F2F2;
-    border-radius: 10px;
-    padding: 20px;
-    width: 100%;
-    display: inline-block;
-    border: none;
-    box-shadow: 0px 14px 18px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-}
 
 .div-section {
     display: flex;
@@ -195,53 +155,96 @@ section ul {
     list-style: none;
 }
 
-.job-item {
+.organization {
+    display: flex;
+    flex-wrap: wrap;
+    width: 970px;
+    gap: 16px;
+}
+
+.organization-item {
+    position: relative;
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
     background-color: #FFFFFF;
     border-radius: 20px;
-    padding: 15px 30px;
+    padding: 35px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.h2-img .heart {
-    border: none;
-    background-color: rgba(255, 255, 255, 1);
-    opacity: 0.6;
-}
-
-.h2-like .heart img {
-    display: block;
-}
-
-.h2-img .heart.active {
-    opacity: 0.9;
-}
-
-.h2-img .heart:hover {
-    opacity: 1;
+.button-write {
     cursor: pointer;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 5px 10px;
+    border-radius: 30px;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(45, 102, 48, 1);
+    border: none;
+    display: line-block;
+    position: relative;
+    top: -5%;
 }
 
-.h2-img button:not(.active) .heart-active {
-    display: none;
+.name-organization {
+    margin-bottom: 20px;
+    max-width: 80%;
 }
 
-.h2-img .heart.active .heart-active {
-    display: block;
+.descript {
+    margin-bottom: 10px;
+    font-size: 18px;
+    display: line-block;
+    position: relative;
+    top: -12%;
 }
 
-.h2-img .heart.active .not-heart-active {
-    display: none;
+.estimation {
+    display: line-block;
+    position: relative;
+    padding: 5px;
+    top: -34%;
+    left: 22%;
 }
 
-.item-money input,
-.item-money .rub {
+.estimation::before {
+    position: absolute;
+    top: 0px;
+    left: -35px;
+    content: url(../img/star.svg);
+}
+
+.city-underground {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+    top: -25%;
+    left: 21%;
+}
+
+.city,
+.underground {
+    position: relative;
     display: inline-block;
-    margin: 0;
-    margin-bottom: 8px;
 }
 
-.item-money input {
-    width: 150px;
+.city {
+    margin-right: 35px;
+}
+
+.city::before {
+    position: absolute;
+    content: url(../img/city.svg);
+    left: -22px;
+}
+
+.underground::before {
+    position: absolute;
+    content: url(../img/underground.svg);
+    left: -30px;
 }
 
 .filter {
@@ -250,72 +253,25 @@ section ul {
     background-color: #FFFFFF;
     border-radius: 20px;
     width: 300px;
-    padding: 0 25px;
+    padding: 5px 25px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.filter-item input[type="number"] {
+.filter-item input[type="education"],
+input[type="number"] {
     background-color: #F2F2F2;
     border-radius: 5px;
     padding: 5px 10px;
 }
 
-h2 {
-    margin: 0;
-}
-
-.h2-img {
-    display: flex;
-    justify-content: space-between;
-}
-
-.h2-img img {
-    display: block;
-}
-
-.job {
-    display: flex;
-    flex-wrap: wrap;
-    width: 970px;
-    gap: 16px;
-}
-
-.title-2-0 {
-    margin-bottom: 10px;
-    max-width: 80%;
-}
-
-.salary {
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-.img-description {
-
-    display: flex;
-    gap: 20px;
-    margin-bottom: 25px;
-}
-
-.description-job {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.description-main {
-    width: 100%;
-}
-
-.city .underground {
-    display: block;
-}
-
-
-
-.requirements {
-    margin-bottom: 20px;
-}
-
-.city {
-    margin-right: 10px;
+.respond-filter {
+    cursor: pointer;
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 4px 9px;
+    border-radius: 30px;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(45, 102, 48, 1);
+    border: none;
 }
