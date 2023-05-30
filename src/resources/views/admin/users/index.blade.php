@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.admin')
 @section('content')
 
     <div class="row">
@@ -7,7 +7,7 @@
 
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('department.create') }}"> Create New Department</a>
+                <a class="btn btn-success" href="{{ route('user.create') }}"> Create New User</a>
             </div>
         </div>
     </div>
@@ -23,14 +23,14 @@
             <th>Name</th>
             <th>Company</th>
         </tr>
-        @foreach ($departments as $department)
+        @foreach ($users as $user)
             <tr>
-                <td>{{ $department->name }}</td>
-                <td>{{ $department->company->name }}</td>
+                <td>{{ $user->name }}</td>
+
                 <td>
-                    <a class="btn btn-info" href="{{ route('department.show',$department->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('department.edit',$department->id) }}">Edit</a>
-                    <form action="{{ route('department.destroy',$department->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('user.show',$user->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('user.edit',$user->id) }}">Edit</a>
+                    <form action="{{ route('user.destroy',$user->id) }}" method="POST">
 
                         @csrf
                         @method('DELETE')
