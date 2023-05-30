@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('layout.app')
 @section('content')
 
     <div class="row">
@@ -7,7 +7,7 @@
 
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('admin.users.create') }}"> Create New User</a>
+                <a class="btn btn-success" href="{{ route('company.create') }}"> Create New Company</a>
             </div>
         </div>
     </div>
@@ -20,17 +20,17 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>Email</th>
-            <th>Password</th>
+            <th>Title</th>
+            <th>Description</th>
         </tr>
-        @foreach ($users as $user)
+        @foreach ($companies as $company)
             <tr>
-                <td>{{ $user->email }}</td>
-                <td>{{ $user->password }}</td>
+                <td>{{ $company->name }}</td>
+                <td>{{ $company->description }}</td>
                 <td>
-                    <a class="btn btn-info" href="{{ route('admin.users.show',$user->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('admin.users.edit',$user->id) }}">Edit</a>
-                    <form action="{{ route('admin.users.destroy',$user->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('company.show',$company->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('company.edit',$company->id) }}">Edit</a>
+                    <form action="{{ route('company.destroy',$company->id) }}" method="POST">
 
                         @csrf
                         @method('DELETE')

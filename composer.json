@@ -1,0 +1,10 @@
+{
+    "require": {
+        "jeroennoten/laravel-adminlte": "^2.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
+    }
+}
