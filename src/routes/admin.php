@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin_EmployerController;
 use App\Http\Controllers\Admin_FileController;
 use App\Http\Controllers\Admin_Organization_socialController;
 use App\Http\Controllers\Admin_OrganizationController;
+use App\Http\Controllers\Admin_PhotoController;
 use App\Http\Controllers\Admin_UserController;
 use App\Http\Controllers\Admin_VacancyController;
 use App\Http\Controllers\Admin_AuthController;

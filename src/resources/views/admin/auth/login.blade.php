@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.auth')
 
 @section('title', 'Авторизация')
 

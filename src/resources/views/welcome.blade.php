@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('title', 'Главная страница Teach Trek')
 @section('content')
 @include('partials.header')
