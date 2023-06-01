@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreOrganizationRequest;
 use App\Http\Requests\UpdateOrganizationRequest;
-use App\Models\Organization;
+use App\Models\organization;
 
 class OrganizationController extends Controller
 {
@@ -13,7 +13,8 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        //
+        $organizations = organization::all();
+        return view('main.organization_list', ['organizations' => $organizations]);
     }
 
     /**
