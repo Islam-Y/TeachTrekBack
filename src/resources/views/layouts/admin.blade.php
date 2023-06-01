@@ -15,7 +15,7 @@
 </html>
 
 
-{{--@extends('orchid::page')--}}
+{{--@extends('adminlte::page')--}}
 
 {{--@section('title', 'Dashboard')--}}
 

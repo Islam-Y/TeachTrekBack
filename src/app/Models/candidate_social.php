@@ -23,6 +23,6 @@ class Candidate_social extends Model
 
     public function candidates()
     {
-        $this->belongsTo(Candidate::class);
+        $this->belongsTo(User::class);
     }
 }

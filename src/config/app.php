@@ -168,7 +168,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Orchid\Platform\Providers\FoundationServiceProvider::class,
 
     ])->toArray(),
 

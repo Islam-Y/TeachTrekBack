@@ -12,7 +12,7 @@ class Organization extends Model
 
     protected $fillable = [
         'name', 'type', 'employer_id',
-        'city_organization', ,
+        'city_organization',
         'photo_id', 'number_employees', 'number_students',
         'description', 'description_mini', 'file_organization_id'
     ];
