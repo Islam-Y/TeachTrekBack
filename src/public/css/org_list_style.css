@@ -214,7 +214,7 @@ section ul {
     position: absolute;
     top: 0px;
     left: -35px;
-    content: url(../img/star.svg);
+    content: url(../media/img/star.svg);
 }
 
 .city-underground {
@@ -237,13 +237,13 @@ section ul {
 
 .city::before {
     position: absolute;
-    content: url(../img/city.svg);
+    content: url(../media/img/city.svg);
     left: -22px;
 }
 
 .underground::before {
     position: absolute;
-    content: url(../img/underground.svg);
+    content: url(../media/img/underground.svg);
     left: -30px;
 }
 

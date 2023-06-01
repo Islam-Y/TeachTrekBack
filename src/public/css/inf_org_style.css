@@ -148,13 +148,13 @@ display: inline-block;
 
 .city::before{
     position: absolute;
-    content: url(../img/city.svg);
+    content: url(../media/img/city.svg);
     left: -22px;
 }
 
 .underground::before{
     position: absolute;
-    content: url(../img/underground.svg);
+    content: url(../media/img/underground.svg);
     left: -30px;
 }
 
@@ -173,7 +173,7 @@ padding: 5px;
     position: absolute;
     top: 0px;
     left: -35px;
-    content: url(../img/star.svg);
+    content: url(../media/img/star.svg);
 }
 
 .div-estimation{
@@ -198,7 +198,7 @@ padding: 5px;
     position: absolute;
     top: -5px;
     left: 75px;
-    content: url(../img/call.svg);
+    content: url(../media/img/call.svg);
 }
 
 .mail-org{
@@ -212,7 +212,7 @@ padding: 5px;
 .mail-org::before{
     position: absolute;
     left: 70px;
-    content: url(../img/email_icon.svg);
+    content: url(../media/img/email_icon.svg);
 }
 
 .mini-briefly{
@@ -430,7 +430,7 @@ display: block;
   }
 
   .requirements-briefly-item::before{
-    content: url(../img/vector.svg);
+    content: url(../media/img/vector.svg);
     margin-right: 10px;
   }
 

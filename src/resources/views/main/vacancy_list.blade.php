@@ -14,7 +14,8 @@
                 <form class="search-job" action="" method="get">
 
                     <input name="s" placeholder="Поиск вакансий" type="search">
-                    <button type="submit" value=""><img src="img/magnifier.svg" alt="Поиск"></button>
+                    <button type="submit" value=""><img src="{{ asset('media/img/magnifier.svg') }}"
+                            alt="Поиск"></button>
 
                 </form>
 
@@ -38,9 +39,11 @@
                                 <a href="{{ route('vacancy', $vacancy->id) }}">
                                     <h2 class="title-2-0">{{ $vacancy->name }}</h2>
                                 </a>
-                                <button class="heart" type="button"><img class="not-heart-active" src='img/heart.png'
-                                        width="30px" height="30px" alt="like"> <img class="heart-active"
-                                        src='img/heart_active.png' width="30px" height="30px" alt="like"> </button>
+                                <button class="heart" type="button"><img class="not-heart-active"
+                                        src="{{ asset('media/img/heart.png') }}" width="30px" height="30px"
+                                        alt="like"> <img class="heart-active"
+                                        src="{{ asset('media/img/heart_active.png') }}" width="30px" height="30px"
+                                        alt="like"> </button>
 
 
                             </div>
