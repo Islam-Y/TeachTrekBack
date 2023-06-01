@@ -8,6 +8,9 @@ import './bootstrap';
 import '../css/app.css';
 import '../css/style.css';
 import { createApp } from 'vue';
+// import './bootstrap';
+import '~adminlte/plugins/jquery/jquery.min.js';
+import '~adminlte/dist/js/adminlte.min.js';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin

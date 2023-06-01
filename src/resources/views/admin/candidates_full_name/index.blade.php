@@ -7,7 +7,7 @@
 
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('technoradar.create') }}"> Create New Technoradar Item</a>
+                <a class="btn btn-success" href="{{ route('candidates_full_name.create') }}"> Create New Candidate Full Name Item</a>
             </div>
         </div>
     </div>
@@ -20,21 +20,21 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>Name</th>
-            <th>Category</th>
-            <th>User type</th>
-            <th>Description</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Отчество</th>
         </tr>
-        @foreach ($technoradars as $technoradar)
+        'name', 'surname', 'patronymic',
+        @foreach ($candidates_full_name as $candidate_full_name)
             <tr>
-                <td>{{ $technoradar->name }}</td>
-                <td>{{ $technoradar->categoryName() }}</td>
-                <td>{{ $technoradar->userTypeName()}}</td>
-                <td>{{ $technoradar->description }}</td>
+                <td>{{ $candidate_full_name->name }}</td>
+                <td>{{ $candidate_full_name->surname }}</td>
+                <td>{{ $candidate_full_name->patronymic}}</td>
+                <td>{{ $candidate_full_name->description }}</td>
                 <td>
-                    <a class="btn btn-info" href="{{ route('technoradar.show',$technoradar->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('technoradar.edit',$technoradar->id) }}">Edit</a>
-                    <form action="{{ route('technoradar.destroy',$technoradar->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('candidates_full_name.show',$candidate_full_name->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('candidates_full_name.edit',$candidate_full_name->id) }}">Edit</a>
+                    <form action="{{ route('candidates_full_name.destroy',$candidate_full_name->id) }}" method="POST">
 
                         @csrf
                         @method('DELETE')

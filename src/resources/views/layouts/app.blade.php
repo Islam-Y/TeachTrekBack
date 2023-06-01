@@ -11,7 +11,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
 
     @stack('styles')
-    
+
     <title>@yield('title')</title>
 
 </head>
@@ -20,7 +20,10 @@
 
     @yield('content')
 
-    <script src="/js/app.js"></script>
+    <script src="{{ asset('js/toggle_user.js') }}"></script>
+    <script src="{{ asset('js/gallery-org.js') }}"></script>
+    <script src="{{ asset('js/likes.js') }}"></script>
+    <script src="{{ asset('js/resume_constructor.js') }}"></script>
 </body>
 
 </html>

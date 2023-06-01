@@ -17,11 +17,11 @@ class Candidate_full_name extends Model
     ];
 
     public function candidates(){
-        $this->belongsTo(Candidate::class);
+        $this->belongsTo(User::class);
     }
 
     public function info(): HasOne
     {
         return $this->hasOne(candidate_info::class);
     }
-}   
+}

@@ -7,7 +7,7 @@
 
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('technoradar.create') }}"> Create New Technoradar Item</a>
+                <a class="btn btn-success" href="{{ route('candidates_info.create') }}"> Create New Candidate Info Item</a>
             </div>
         </div>
     </div>
@@ -20,21 +20,29 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>Name</th>
-            <th>Category</th>
-            <th>User type</th>
-            <th>Description</th>
+            <th>Пол</th>
+            <th>Профессия</th>
+            <th>Специализация</th>
+            <th>Город проживания</th>
+            <th>Описание</th>
+            <th>Файлы</th>
+            <th>Фото</th>
+            <th>Соискатель</th>
         </tr>
-        @foreach ($technoradars as $technoradar)
+        @foreach ($candidates_info as $candidate_info)
             <tr>
-                <td>{{ $technoradar->name }}</td>
-                <td>{{ $technoradar->categoryName() }}</td>
-                <td>{{ $technoradar->userTypeName()}}</td>
-                <td>{{ $technoradar->description }}</td>
+                <td>{{ $candidate_info->floor }}</td>
+                <td>{{ $candidate_info->profession }}</td>
+                <td>{{ $candidate_info->specialization}}</td>
+                <td>{{ $candidate_info->city_candidate }}</td>
+                <td>{{ $candidate_info->description }}</td>
+                <td>{{ $candidate_info->file_candidate_id }}</td>
+                <td>{{ $candidate_info->photo_id }}</td>
+                <td>{{ $candidate_info->candidates_full_name->id }}</td>
                 <td>
-                    <a class="btn btn-info" href="{{ route('technoradar.show',$technoradar->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('technoradar.edit',$technoradar->id) }}">Edit</a>
-                    <form action="{{ route('technoradar.destroy',$technoradar->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('candidates_info.show',$candidate_info->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('candidates_info.edit',$candidate_info->id) }}">Edit</a>
+                    <form action="{{ route('candidates_info.destroy',$candidate_info->id) }}" method="POST">
 
                         @csrf
                         @method('DELETE')

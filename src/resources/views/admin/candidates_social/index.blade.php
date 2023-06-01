@@ -7,7 +7,7 @@
 
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('technoradar.create') }}"> Create New Technoradar Item</a>
+                <a class="btn btn-success" href="{{ route('candidates_social.create') }}"> Create New Candidate Social Item</a>
             </div>
         </div>
     </div>
@@ -20,17 +20,19 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>Name</th>
-            <th>Category</th>
-            <th>User type</th>
-            <th>Description</th>
+            <th>Социальные сети</th>
+            <th>Email</th>
+            <th>Номер телефона</th>
+            <th>Адрес</th>
+            <th>Соискатель</th>
+            'social_links', 'email', 'phone_number', 'address', 'candidate_full_name_id'
         </tr>
-        @foreach ($technoradars as $technoradar)
+        @foreach ($candidates_social as $candidate_social)
             <tr>
-                <td>{{ $technoradar->name }}</td>
-                <td>{{ $technoradar->categoryName() }}</td>
-                <td>{{ $technoradar->userTypeName()}}</td>
-                <td>{{ $technoradar->description }}</td>
+                <td>{{ $candidates_social->name }}</td>
+                <td>{{ $candidates_social->categoryName() }}</td>
+                <td>{{ $candidates_social->userTypeName()}}</td>
+                <td>{{ $candidates_social->description }}</td>
                 <td>
                     <a class="btn btn-info" href="{{ route('technoradar.show',$technoradar->id) }}">Show</a>
                     <a class="btn btn-primary" href="{{ route('technoradar.edit',$technoradar->id) }}">Edit</a>
