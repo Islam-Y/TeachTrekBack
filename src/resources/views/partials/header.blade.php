@@ -2,7 +2,7 @@
     <div class="header-up">
 
         <a class="logo" href="{{ route('home_page') }}">
-            <img src="{{ asset('media/img/logo_final.svg') }}" class="logo-img" alt="Logo Teach Trek">
+            <img src="{{ asset('media/img/logo_final.png') }}" class="logo-img" alt="Logo Teach Trek">
         </a>
 
         @if (auth()->check())
