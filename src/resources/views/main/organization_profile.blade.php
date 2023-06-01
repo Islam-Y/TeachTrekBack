@@ -155,7 +155,7 @@
                     <button class='respond' type="button" name="button-response">Откликнуться</button>
 
                 </article>
-                @endforeach
+            @endforeach
         </div>
 
     </div>
