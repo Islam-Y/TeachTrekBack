@@ -36,9 +36,6 @@ a {
     flex-grow: 1;
 }
 
-.header-main {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
 
 .header-up button {
     cursor: pointer;
@@ -48,6 +45,7 @@ a {
 
 .header-down {
     background-color: #FFFFFF;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .header-down a {
