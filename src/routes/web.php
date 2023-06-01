@@ -11,7 +11,7 @@ use App\Http\Controllers\AuthController;
 
 require __DIR__.'/admin.php';
 
-Route::get('/', [IndexController::class, 'index'])->name('home');
+Route::get('/', [IndexController::class, 'index'])->name('home_page');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 

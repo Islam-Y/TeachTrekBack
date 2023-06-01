@@ -25,7 +25,7 @@
 
     @include('partials.footer')
 
-    @stack('js')
+    @include('main.scripts')
 </body>
 
 </html>

@@ -25,6 +25,13 @@ a {
     outline: none;
 }
 
+
+.logo-img{
+    display: block;
+    width: 150px;
+    height: auto;
+}
+
 .main-hero {
     flex-grow: 1;
 }
@@ -176,7 +183,7 @@ a {
     width: 85%;
     margin: 0 auto;
     margin-bottom: 92px;
-    /* background-image: url('../img/back-title.svg'); */
+    background-image: url('../media/img/back-title.svg');
 }
 
 .title h1 {

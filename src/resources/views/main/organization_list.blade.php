@@ -13,7 +13,8 @@
                 <form class="search-organization" action="" method="get">
 
                     <input name="s" placeholder="Поиск организации" type="search">
-                    <button type="submit" value=""><img src="img/magnifier.svg" alt="Поиск"></button>
+                    <button type="submit" value=""><img src="{{ asset('media/img/magnifier.svg') }}"
+                            alt="Поиск"></button>
 
                 </form>
             </div>
