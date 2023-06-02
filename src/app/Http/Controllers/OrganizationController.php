@@ -36,9 +36,10 @@ class OrganizationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Organization $organization)
+    public function show(int $id)
     {
-        //
+        $organization = organization::where('id', $id)->first();
+        return view('main.organization_profiile', ['organization' => $organization]);
     }
 
     /**
