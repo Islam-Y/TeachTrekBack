@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEmployerRequest;
 use App\Http\Requests\UpdateEmployerRequest;
-use App\Models\Employer;
+use App\Models\employer;
+use Illuminate\Support\Facades\Hash;
 
 class EmployerController extends Controller
 {
@@ -13,7 +14,8 @@ class EmployerController extends Controller
      */
     public function index()
     {
-        //
+        $employers = employer::all();
+        return view('main.employers_list', ['employers' => $employers, 'title' => 'Employers']); 
     }
 
     /**
@@ -29,15 +31,27 @@ class EmployerController extends Controller
      */
     public function store(StoreEmployerRequest $request)
     {
-        //
+        $employer = new Employer;
+        $employer->email = $request->email;
+
+        $hashed_password = Hash::make($request->password);
+        $employer->password = $hashed_password;
+        $employer->save();
+
+        // TODO: Add redirection page to employer's page
+        return redirect('');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Employer $employer)
+    public function show(int $id)
     {
-        //
+        $requested_employer = Employer::where('id', $id)->first();
+        return view('main.employer_profile',  [
+            'title' => $requested_employer,
+            'employer' => $requested_employer
+        ]);
     }
 
     /**
@@ -53,7 +67,14 @@ class EmployerController extends Controller
      */
     public function update(UpdateEmployerRequest $request, Employer $employer)
     {
-        //
+        $email = $employer->email;
+        $cur_employer = Employer::all()->find($email);
+        $hashed_password = Hash::make($request->password);
+
+        // TODO: Look at password warning
+        $cur_employer->password = $hashed_password;
+        $cur_employer->save();
+        // TODO: Add redirect to employer's page
     }
 
     /**
@@ -61,6 +82,6 @@ class EmployerController extends Controller
      */
     public function destroy(Employer $employer)
     {
-        //
+        $employer->delete();
     }
 }

@@ -1,44 +1,44 @@
 <?php
 
-use App\Http\Controllers\Candidate_educationController;
-use App\Http\Controllers\Candidate_experienceController;
-use App\Http\Controllers\Candidate_full_nameController;
-use App\Http\Controllers\Candidate_infoController;
-use App\Http\Controllers\Candidate_socialController;
-use App\Http\Controllers\CandidateController;
-use App\Http\Controllers\Employer_infoController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EmployerController;
-use App\Http\Controllers\FilesController;
-use App\Http\Controllers\Organization_socialController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\VacancyController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
-Route::resource('candidate_education', Candidate_educationController::class);
+require __DIR__.'/admin.php';
 
-Route::resource('candidate_experience', Candidate_experienceController::class);
+Route::get('/', [IndexController::class, 'index'])->name('home_page');
 
-Route::resource('candidate_full_name', Candidate_full_nameController::class);
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::resource('candidate_info', Candidate_infoController::class);
 
-Route::resource('candidate_social', Candidate_socialController::class);
-
-Route::resource('candidate', CandidateController::class);
-
-Route::resource('employer_info', Employer_infoController::class);
-
-Route::resource('employer', EmployerController::class);
-
-Route::resource('files', FilesController::class);
-
-Route::resource('organization_social', Organization_socialController::class);
-
-Route::resource('organization', OrganizationController::class);
-
-Route::resource('vacancy', VacancyController::class);
-
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware("auth:web")->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
+Route::middleware("guest:web")->group(function () {
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login_process', [AuthController::class, 'login'])->name('login_process');
+
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register_process', [AuthController::class, 'register'])->name('register_process');
+
+    Route::get('/forgot', [AuthController::class, 'showForgotForm'])->name('forgot');
+    Route::post('/forgot_process', [AuthController::class, 'forgot'])->name('forgot_process');
+});
+
+Route::get('/user/list', [UserController::class, 'index'])->name('user_list');
+Route::get('/user/{id}', [UserController::class, 'show'])->name('user_profile');
+
+Route::get('/employer/list', [EmployerController::class, 'index'])->name('employer_list');
+Route::get('/employer/{id}', [EmployerController::class, 'show'])->name('employer_profile');
+
+Route::get('/vacancy/list', [VacancyController::class, 'index'])->name('vacancy_list');
+Route::get('/vacancy/{id}', [VacancyController::class, 'show'])->name('vacancy');
+
+Route::get('/organization/list', [OrganizationController::class, 'index'])->name('organization_list');
+Route::get('/organization/{id}', [OrganizationController::class, 'show'])->name('organization_profile');

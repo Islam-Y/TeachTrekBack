@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVacancyRequest;
 use App\Http\Requests\UpdateVacancyRequest;
-use App\Models\Vacancy;
+use App\Models\vacancy;
 
 class VacancyController extends Controller
 {
@@ -13,7 +13,8 @@ class VacancyController extends Controller
      */
     public function index()
     {
-        //
+        $vacancies = vacancy::all();
+        return view('main.vacancy_list', ['vacancies' => $vacancies, 'title' => 'Vacancy']); 
     }
 
     /**
@@ -29,7 +30,16 @@ class VacancyController extends Controller
      */
     public function store(StoreVacancyRequest $request)
     {
-        //
+        $request->validate([
+            'name' => 'required', 'salary' => 'required',
+            'city_vacancy' => 'required', 'underground' => 'required',
+            'description' => 'required', 'employer_id' => 'required',
+            'duties' => 'required', 'requirements' => 'required',
+            'advantages_vacancy' => 'required',
+        ]);
+        $vacancy = Vacancy::create($request->all());
+        // TODO: Add redirect to created vacancy's page
+        return redirect('');
     }
 
     /**

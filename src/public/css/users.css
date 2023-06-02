@@ -1,0 +1,212 @@
+body {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    background-color: #F5F5F5;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.button-write {
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 5px 10px;
+    border-radius: 30px;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(45, 102, 48, 1);
+    border: none;
+}
+
+.users-item .heart {
+    position: absolute;
+    cursor: pointer;
+    bottom: 25px;
+    left: 140px;
+}
+
+.users-item .heart {
+    border: none;
+    background-color: rgba(255, 255, 255, 1);
+    opacity: 0.6;
+}
+
+.users-item .heart img {
+    display: block;
+}
+
+.users-item .heart.active {
+    opacity: 0.9;
+}
+
+.users-item .heart:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.users-item button:not(.active) .heart-active {
+    display: none;
+}
+
+.users-item .heart.active .heart-active {
+    display: block;
+}
+
+.users-item .heart.active .not-heart-active {
+    display: none;
+}
+
+.search {
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 25px;
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.search-user {
+    width: 64%;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.search-user input {
+    background-color: #F2F2F2;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    display: inline-block;
+    border: none;
+    box-shadow: 0px 14px 18px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.search-user button {
+    border: none;
+    border-radius: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #F2F2F2;
+    cursor: pointer;
+
+}
+
+.specification {
+    width: 30%;
+}
+
+.specification select {
+    cursor: pointer;
+    background-color: #F2F2F2;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    display: inline-block;
+    border: none;
+    box-shadow: 0px 14px 18px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.div-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+section ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.users-item {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    justify-content: space-between;
+}
+
+.item-money input,
+.item-money .rub {
+    display: inline-block;
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+.item-money input {
+    width: 150px;
+}
+
+.filter {
+    margin: 0;
+    list-style: none;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    width: 300px;
+    padding: 0 25px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.filter-item input[type="education"],
+input[type="number"] {
+    background-color: #F2F2F2;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.respond-filter {
+    cursor: pointer;
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 4px 9px;
+    border-radius: 30px;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(45, 102, 48, 1);
+    border: none;
+}
+
+.users {
+    display: flex;
+    flex-wrap: wrap;
+    width: 970px;
+    gap: 16px;
+}
+
+.name-user {
+    margin-bottom: 5px;
+    max-width: 80%;
+}
+
+.description-mini-user {
+    margin-bottom: 10px;
+}
+
+.salary {
+    margin-bottom: 10px;
+}
+
+.description-user ul li {
+    margin-bottom: 10px;
+}
