@@ -11,7 +11,8 @@
         "jeroennoten/laravel-adminlte": "^3.9",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "laravelcollective/html": "^6.4"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

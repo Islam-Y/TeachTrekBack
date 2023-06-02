@@ -1,13 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Add New Technoradar Item</h2>
+                <h2>Add New Candidates Education Item</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('technoradar.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('admin.candidates_education.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -21,31 +21,43 @@
             </ul>
         </div>
     @endif
-
-    <form action="{{ route('technoradar.store') }}" method="POST">
+    'name_educational_university', 'location_educational_university', 'institute', 'year_of_release', 'candidate_full_name_id'
+    <form action="{{ route('admin.candidates_education.store') }}" method="POST">
         @csrf
 
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Name:</strong>
-                    <input type="text" name="name" class="form-control" placeholder="Title">
+                    <strong>Наименование образовательной организации:</strong>
+                    <input type="text" name="name" class="form-control" placeholder="Name">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Category:</strong>
-                    {!! Form::select('category',  $categories, null, ['class' => 'form-control']) !!}
-
+                    <strong>Местоположение ообразовательной организации:</strong>
+                    <input type="text" name="name" class="form-control" placeholder="Local">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>User type:</strong>
-                    {!! Form::select('user_type',  $user_types, null, ['class' => 'form-control']) !!}
+                    <strong>Институт:</strong>
+                    <input type="text" name="name" class="form-control" placeholder="Institute">
+                </div>
+            </div>
 
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Год выпуска:</strong>
+                    <input type="datetime-local" name="name" class="form-control" placeholder="Year">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Соискатель:</strong>
+                    {!! Form::select('candidate_full_name_id',  $candidates_full_name, null, ['class' => 'form-control']) !!}
 
                 </div>
             </div>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 
     <div class="row">
@@ -7,7 +7,7 @@
 
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('candidates_social.create') }}"> Create New Candidate Social Item</a>
+                <a class="btn btn-success" href="{{ route('admin.candidates_social.create') }}"> Create New Candidate Social Item</a>
             </div>
         </div>
     </div>
@@ -25,18 +25,19 @@
             <th>Номер телефона</th>
             <th>Адрес</th>
             <th>Соискатель</th>
-            'social_links', 'email', 'phone_number', 'address', 'candidate_full_name_id'
+
         </tr>
         @foreach ($candidates_social as $candidate_social)
             <tr>
-                <td>{{ $candidates_social->name }}</td>
-                <td>{{ $candidates_social->categoryName() }}</td>
-                <td>{{ $candidates_social->userTypeName()}}</td>
-                <td>{{ $candidates_social->description }}</td>
+                <td>{{ $candidate_social->social_links }}</td>
+                <td>{{ $candidate_social->email }}</td>
+                <td>{{ $candidate_social->phone_number}}</td>
+                <td>{{ $candidate_social->address }}</td>
+                <td>{{ $candidate_social->candidates_full_name }}</td>
                 <td>
-                    <a class="btn btn-info" href="{{ route('technoradar.show',$technoradar->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('technoradar.edit',$technoradar->id) }}">Edit</a>
-                    <form action="{{ route('technoradar.destroy',$technoradar->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('admin.candidates_social.show',$candidates_social->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('admin.candidates_social.edit',$candidates_social->id) }}">Edit</a>
+                    <form action="{{ route('admin.candidates_social.destroy',$candidate_social->id) }}" method="POST">
 
                         @csrf
                         @method('DELETE')

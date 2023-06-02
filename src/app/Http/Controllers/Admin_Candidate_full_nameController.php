@@ -15,7 +15,7 @@ class Admin_Candidate_full_nameController extends Controller
     {
         $candidates_full_name = Candidate_full_name::all();
 
-        return view('candidates_full_name.index', compact('candidates_full_name'));
+        return view('admin.candidates_full_name.index', compact('candidates_full_name'));
     }
 
     /**
@@ -23,7 +23,7 @@ class Admin_Candidate_full_nameController extends Controller
      */
     public function create()
     {
-        return view('candidates_full_name.create');
+        return view('admin.candidates_full_name.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class Admin_Candidate_full_nameController extends Controller
 
         Candidate_full_name::create($request->all());
 
-        return redirect()->route('candidates_full_name.index')->with('success','Candidate_full_name created successfully.');
+        return redirect()->route('admin.candidates_full_name.index')->with('success','Candidate_full_name created successfully.');
     }
 
     /**
@@ -48,7 +48,7 @@ class Admin_Candidate_full_nameController extends Controller
      */
     public function show(Candidate_full_name $candidate_full_name)
     {
-        return view('candidates_full_name.show',compact('candidate_full_name'));
+        return view('admin.candidates_full_name.show',compact('candidate_full_name'));
     }
 
     /**
@@ -56,7 +56,7 @@ class Admin_Candidate_full_nameController extends Controller
      */
     public function edit(Candidate_full_name $candidate_full_name)
     {
-        return view('candidates_full_name.edit',compact('candidate_full_name'));
+        return view('admin.candidates_full_name.edit',compact('candidate_full_name'));
     }
 
     /**
@@ -73,7 +73,7 @@ class Admin_Candidate_full_nameController extends Controller
 
         $candidate_full_name->update($request->all());
 
-        return redirect()->route('candidates_full_name.index')->with('success','Candidate_full_name updated successfully');
+        return redirect()->route('admin.candidates_full_name.index')->with('success','Candidate_full_name updated successfully');
     }
 
     /**
@@ -83,7 +83,7 @@ class Admin_Candidate_full_nameController extends Controller
     {
         $candidate_full_name->delete();
 
-        return redirect()->route('candidates_full_name.index')
+        return redirect()->route('admin.candidates_full_name.index')
             ->with('success','Candidate_full_name deleted successfully');
     }
 }

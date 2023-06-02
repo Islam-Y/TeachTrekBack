@@ -1,13 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Add New Technoradar Item</h2>
+                <h2>Add New Candidates Full Name Item</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('technoradar.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('admin.candidates_full_name.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@
         </div>
     @endif
 
-    <form action="{{ route('technoradar.store') }}" method="POST">
+    <form action="{{ route('admin.candidates_full_name.store') }}" method="POST">
         @csrf
 
         <div class="row">

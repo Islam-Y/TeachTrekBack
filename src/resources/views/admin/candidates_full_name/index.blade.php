@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 
     <div class="row">
@@ -7,7 +7,7 @@
 
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('candidates_full_name.create') }}"> Create New Candidate Full Name Item</a>
+                <a class="btn btn-success" href="{{ route('admin.candidates_full_name.create') }}"> Create New Candidate Full Name Item</a>
             </div>
         </div>
     </div>
@@ -23,18 +23,19 @@
             <th>Имя</th>
             <th>Фамилия</th>
             <th>Отчество</th>
+            <th>email</th>
         </tr>
-        'name', 'surname', 'patronymic',
+
         @foreach ($candidates_full_name as $candidate_full_name)
             <tr>
                 <td>{{ $candidate_full_name->name }}</td>
                 <td>{{ $candidate_full_name->surname }}</td>
                 <td>{{ $candidate_full_name->patronymic}}</td>
-                <td>{{ $candidate_full_name->description }}</td>
+                <td>{{ $candidate_full_name->users->email }}</td>
                 <td>
-                    <a class="btn btn-info" href="{{ route('candidates_full_name.show',$candidate_full_name->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('candidates_full_name.edit',$candidate_full_name->id) }}">Edit</a>
-                    <form action="{{ route('candidates_full_name.destroy',$candidate_full_name->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('admin.candidates_full_name.show',$candidate_full_name->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('admin.candidates_full_name.edit',$candidate_full_name->id) }}">Edit</a>
+                    <form action="{{ route('admin.candidates_full_name.destroy',$candidate_full_name->id) }}" method="POST">
 
                         @csrf
                         @method('DELETE')

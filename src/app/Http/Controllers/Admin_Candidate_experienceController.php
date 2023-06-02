@@ -15,7 +15,7 @@ class Admin_Candidate_experienceController extends Controller
     {
         $candidates_experience = Candidate_experience::all();
 
-        return view('candidates_experience.index', compact('candidates_experience'));
+        return view('admin.candidates_experience.index', compact('candidates_experience'));
     }
 
     /**
@@ -23,7 +23,7 @@ class Admin_Candidate_experienceController extends Controller
      */
     public function create()
     {
-        return view('candidates_experience.create');
+        return view('admin.candidates_experience.create');
     }
 
     /**
@@ -42,7 +42,7 @@ class Admin_Candidate_experienceController extends Controller
 
         Candidate_experience::create($request->all());
 
-        return redirect()->route('candidates_experience.index')->with('success','Candidate_experience created successfully.');
+        return redirect()->route('admin.candidates_experience.index')->with('success','Candidate_experience created successfully.');
     }
 
     /**
@@ -50,7 +50,7 @@ class Admin_Candidate_experienceController extends Controller
      */
     public function show(Candidate_experience $candidate_experience)
     {
-        return view('candidates_experience.show',compact('candidate_experience'));
+        return view('admin.candidates_experience.show',compact('candidate_experience'));
     }
 
     /**
@@ -58,7 +58,7 @@ class Admin_Candidate_experienceController extends Controller
      */
     public function edit(Candidate_experience $candidate_experience)
     {
-        return view('candidates_experience.edit',compact('candidate_experience'));
+        return view('admin.candidates_experience.edit',compact('candidate_experience'));
     }
 
     /**
@@ -77,7 +77,7 @@ class Admin_Candidate_experienceController extends Controller
 
         $candidate_experience->update($request->all());
 
-        return redirect()->route('candidates_experience.index')->with('success','Candidate_experience updated successfully');
+        return redirect()->route('admin.candidates_experience.index')->with('success','Candidate_experience updated successfully');
     }
 
     /**
@@ -87,7 +87,7 @@ class Admin_Candidate_experienceController extends Controller
     {
         $candidate_experience->delete();
 
-        return redirect()->route('candidates_experience.index')
+        return redirect()->route('admin.candidates_experience.index')
             ->with('success','Candidate_experience deleted successfully');
     }
 }

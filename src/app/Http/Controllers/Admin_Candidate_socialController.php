@@ -15,7 +15,7 @@ class Admin_Candidate_socialController extends Controller
     {
         $candidates_social = Candidate_social::all();
 
-        return view('candidates_social.index', compact('candidates_social'));
+        return view('admin.candidates_social.index', compact('candidates_social'));
     }
 
     /**
@@ -23,7 +23,7 @@ class Admin_Candidate_socialController extends Controller
      */
     public function create()
     {
-        return view('candidates_social.create');
+        return view('admin.candidates_social.create');
     }
 
     /**
@@ -41,7 +41,7 @@ class Admin_Candidate_socialController extends Controller
 
         Candidate_social::create($request->all());
 
-        return redirect()->route('candidates_social.index')->with('success','Candidate_social created successfully.');
+        return redirect()->route('admin.candidates_social.index')->with('success','Candidate_social created successfully.');
     }
 
     /**
@@ -49,7 +49,7 @@ class Admin_Candidate_socialController extends Controller
      */
     public function show(Candidate_social $candidate_social)
     {
-        return view('candidates_social.show',compact('candidate_social'));
+        return view('admin.candidates_social.show',compact('candidate_social'));
     }
 
     /**
@@ -57,7 +57,7 @@ class Admin_Candidate_socialController extends Controller
      */
     public function edit(Candidate_social $candidate_social)
     {
-        return view('candidates_social.edit',compact('candidate_social'));
+        return view('admin.candidates_social.edit',compact('candidate_social'));
     }
 
     /**
@@ -75,7 +75,7 @@ class Admin_Candidate_socialController extends Controller
 
         $candidate_social->update($request->all());
 
-        return redirect()->route('candidates_social.index')->with('success','Candidate_social updated successfully');
+        return redirect()->route('admin.candidates_social.index')->with('success','Candidate_social updated successfully');
     }
 
     /**
@@ -85,7 +85,7 @@ class Admin_Candidate_socialController extends Controller
     {
         $candidate_social->delete();
 
-        return redirect()->route('candidates_social.index')
+        return redirect()->route('admin.candidates_social.index')
             ->with('success','Candidate_social deleted successfully');
     }
 }

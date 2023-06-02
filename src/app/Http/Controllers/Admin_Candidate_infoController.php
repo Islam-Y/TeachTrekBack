@@ -15,7 +15,7 @@ class Admin_Candidate_infoController extends Controller
     {
         $candidates_info = Candidate_info::all();
 
-        return view('candidates_info.index', compact('candidates_info'));
+        return view('admin.candidates_info.index', compact('candidates_info'));
     }
 
     /**
@@ -23,7 +23,7 @@ class Admin_Candidate_infoController extends Controller
      */
     public function create()
     {
-        return view('candidates_info.create');
+        return view('admin.candidates_info.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class Admin_Candidate_infoController extends Controller
 
         Candidate_info::create($request->all());
 
-        return redirect()->route('candidates_info.index')->with('success','Candidate_info created successfully.');
+        return redirect()->route('admin.candidates_info.index')->with('success','Candidate_info created successfully.');
     }
 
     /**
@@ -52,7 +52,7 @@ class Admin_Candidate_infoController extends Controller
      */
     public function show(Candidate_info $candidate_info)
     {
-        return view('candidates_info.show',compact('candidate_info'));
+        return view('admin.candidates_info.show',compact('candidate_info'));
     }
 
     /**
@@ -60,7 +60,7 @@ class Admin_Candidate_infoController extends Controller
      */
     public function edit(Candidate_info $candidate_info)
     {
-        return view('candidates_info.edit',compact('candidate_info'));
+        return view('admin.candidates_info.edit',compact('candidate_info'));
     }
 
     /**
@@ -81,7 +81,7 @@ class Admin_Candidate_infoController extends Controller
 
         $candidate_info->update($request->all());
 
-        return redirect()->route('candidates_info.index')->with('success','Candidate_info updated successfully');
+        return redirect()->route('admin.candidates_info.index')->with('success','Candidate_info updated successfully');
     }
 
     /**
@@ -91,7 +91,7 @@ class Admin_Candidate_infoController extends Controller
     {
         $candidate_info->delete();
 
-        return redirect()->route('candidates_info.index')
+        return redirect()->route('admin.candidates_info.index')
             ->with('success','Candidate_info deleted successfully');
     }
 }

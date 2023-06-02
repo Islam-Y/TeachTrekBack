@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 
     <div class="row">
@@ -7,7 +7,7 @@
 
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('candidates_experience.create') }}"> Create New Candidate Experience Item</a>
+                <a class="btn btn-success" href="{{ route('admin.candidates_experience.create') }}"> Create New Candidate Experience Item</a>
             </div>
         </div>
     </div>
@@ -34,9 +34,9 @@
                 <td>{{ $candidate_experience->start_work }}</td>
                 <td>{{ $candidate_experience->end_work }}</td>
                 <td>
-                    <a class="btn btn-info" href="{{ route('candidates_experience.show',$candidate_experience->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('candidates_experience.edit',$candidate_experience->id) }}">Edit</a>
-                    <form action="{{ route('candidates_experience.destroy',$candidate_experience->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('admin.candidates_experience.show',$candidate_experience->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('admin.candidates_experience.edit',$candidate_experience->id) }}">Edit</a>
+                    <form action="{{ route('admin.candidates_experience.destroy',$candidate_experience->id) }}" method="POST">
 
                         @csrf
                         @method('DELETE')

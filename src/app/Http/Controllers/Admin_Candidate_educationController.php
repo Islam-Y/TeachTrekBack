@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCandidate_educationRequest;
 use App\Http\Requests\UpdateCandidate_educationRequest;
 use App\Models\Candidate_education;
+use App\Models\Candidate_full_name;
 
 class Admin_Candidate_educationController extends Controller
 {
@@ -15,7 +16,7 @@ class Admin_Candidate_educationController extends Controller
     {
         $candidates_education = Candidate_education::all();
 
-        return view('candidates_education.index', compact('candidates_education'));
+        return view('admin.candidates_education.index', compact('candidates_education'));
     }
 
     /**
@@ -23,7 +24,12 @@ class Admin_Candidate_educationController extends Controller
      */
     public function create()
     {
-        return view('candidates_education.create');
+        $candidates_full_name = Candidate_full_name::all()->pluck('name', 'id')->all();
+
+        return view('admin.candidates_education.create', [
+            'departments' => $candidates_full_name,
+        ]);
+
     }
 
     /**
@@ -41,7 +47,7 @@ class Admin_Candidate_educationController extends Controller
 
         Candidate_education::create($request->all());
 
-        return redirect()->route('candidates_education.index')->with('success','Candidate_education created successfully.');
+        return redirect()->route('admin.candidates_education.index')->with('success','Candidate_education created successfully.');
     }
 
     /**
@@ -49,7 +55,7 @@ class Admin_Candidate_educationController extends Controller
      */
     public function show(Candidate_education $candidate_education)
     {
-        return view('candidates_education.show',compact('candidate_education'));
+        return view('admin.candidates_education.show',compact('candidate_education'));
     }
 
     /**
@@ -57,7 +63,7 @@ class Admin_Candidate_educationController extends Controller
      */
     public function edit(Candidate_education $candidate_education)
     {
-        return view('candidates_education.edit',compact('candidate_education'));
+        return view('admin.candidates_education.edit',compact('candidate_education'));
     }
 
     /**
@@ -75,7 +81,7 @@ class Admin_Candidate_educationController extends Controller
 
         $candidate_education->update($request->all());
 
-        return redirect()->route('candidates_education.index')->with('success','Candidate_education updated successfully');
+        return redirect()->route('admin.candidates_education.index')->with('success','Candidate_education updated successfully');
     }
 
     /**
@@ -85,7 +91,7 @@ class Admin_Candidate_educationController extends Controller
     {
         $candidate_education->delete();
 
-        return redirect()->route('candidates_education.index')
+        return redirect()->route('admin.candidates_education.index')
             ->with('success','Candidate_education deleted successfully');
     }
 }

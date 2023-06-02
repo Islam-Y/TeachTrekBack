@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 
     <div class="row">
@@ -7,7 +7,7 @@
 
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('candidates_education.create') }}"> Create New Candidate Education Item</a>
+                <a class="btn btn-success" href="{{ route('admin.candidates_education.create') }}"> Create New Candidate Education Item</a>
             </div>
         </div>
     </div>
@@ -24,6 +24,7 @@
             <th>Местоположение ообразовательной организации</th>
             <th>Институт</th>
             <th>Год выпуска</th>
+            <th>Соискатель</th>
         </tr>
         @foreach ($candidates_education as $candidate_education)
             <tr>
@@ -31,10 +32,11 @@
                 <td>{{ $candidate_education->location_educational_university }}</td>
                 <td>{{ $candidate_education->institute}}</td>
                 <td>{{ $candidate_education->year_of_release }}</td>
+                <td>{{ $candidate_education->candidates_full_name }}</td>
                 <td>
-                    <a class="btn btn-info" href="{{ route('candidates_education.show',$candidate_education->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('candidates_education.edit',$candidate_education->id) }}">Edit</a>
-                    <form action="{{ route('candidates_education.destroy',$candidate_education->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('admin.candidates_education.show',$candidate_education->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('admin.candidates_education.edit',$candidate_education->id) }}">Edit</a>
+                    <form action="{{ route('admin.candidates_education.destroy',$candidate_education->id) }}" method="POST">
 
                         @csrf
                         @method('DELETE')

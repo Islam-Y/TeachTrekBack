@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 
     <div class="row">
@@ -7,7 +7,7 @@
 
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('candidates_info.create') }}"> Create New Candidate Info Item</a>
+                <a class="btn btn-success" href="{{ route('admin.candidates_info.create') }}"> Create New Candidate Info Item</a>
             </div>
         </div>
     </div>
@@ -40,9 +40,9 @@
                 <td>{{ $candidate_info->photo_id }}</td>
                 <td>{{ $candidate_info->candidates_full_name->id }}</td>
                 <td>
-                    <a class="btn btn-info" href="{{ route('candidates_info.show',$candidate_info->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('candidates_info.edit',$candidate_info->id) }}">Edit</a>
-                    <form action="{{ route('candidates_info.destroy',$candidate_info->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('admin.candidates_info.show',$candidate_info->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('admin.candidates_info.edit',$candidate_info->id) }}">Edit</a>
+                    <form action="{{ route('admin.candidates_info.destroy',$candidate_info->id) }}" method="POST">
 
                         @csrf
                         @method('DELETE')
