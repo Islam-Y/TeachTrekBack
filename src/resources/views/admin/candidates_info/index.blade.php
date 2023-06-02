@@ -26,7 +26,7 @@
             <th>Город проживания</th>
             <th>Описание</th>
             <th>Файлы</th>
-            <th>Фото</th>
+            <th>Фотографии</th>
             <th>Соискатель</th>
         </tr>
         @foreach ($candidates_info as $candidate_info)

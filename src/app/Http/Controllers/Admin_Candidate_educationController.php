@@ -27,7 +27,7 @@ class Admin_Candidate_educationController extends Controller
         $candidates_full_name = Candidate_full_name::all()->pluck('name', 'id')->all();
 
         return view('admin.candidates_education.create', [
-            'departments' => $candidates_full_name,
+            'candidates_full_name' => $candidates_full_name,
         ]);
 
     }

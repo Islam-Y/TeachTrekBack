@@ -21,7 +21,7 @@ class Candidate_social extends Model
         $this->hasMany(Candidate_full_name::class);
     }
 
-    public function candidates()
+    public function users()
     {
         $this->belongsTo(User::class);
     }

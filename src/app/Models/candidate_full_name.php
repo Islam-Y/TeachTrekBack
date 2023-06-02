@@ -13,10 +13,10 @@ class Candidate_full_name extends Model
     protected $table = 'candidates_full_name';
 
     protected $fillable = [
-        'name', 'surname', 'patronymic', 'candidate_id'
+        'name', 'surname', 'patronymic', 'user_id'
     ];
 
-    public function candidates(){
+    public function users(){
         $this->belongsTo(User::class);
     }
 

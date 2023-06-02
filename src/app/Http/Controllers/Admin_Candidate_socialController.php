@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCandidate_socialRequest;
 use App\Http\Requests\UpdateCandidate_socialRequest;
+use App\Models\Candidate_full_name;
 use App\Models\Candidate_social;
 
 class Admin_Candidate_socialController extends Controller
@@ -23,7 +24,11 @@ class Admin_Candidate_socialController extends Controller
      */
     public function create()
     {
-        return view('admin.candidates_social.create');
+        $candidates_full_name = Candidate_full_name::all()->pluck('name', 'id')->all();
+
+        return view('admin.candidates_social.create', [
+            'candidates_full_name' => $candidates_full_name,
+        ]);
     }
 
     /**

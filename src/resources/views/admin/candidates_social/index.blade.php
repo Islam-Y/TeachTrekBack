@@ -30,7 +30,7 @@
         @foreach ($candidates_social as $candidate_social)
             <tr>
                 <td>{{ $candidate_social->social_links }}</td>
-                <td>{{ $candidate_social->email }}</td>
+                <td>{{ $candidate_social->user->email }}</td>
                 <td>{{ $candidate_social->phone_number}}</td>
                 <td>{{ $candidate_social->address }}</td>
                 <td>{{ $candidate_social->candidates_full_name }}</td>

@@ -28,32 +28,30 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Name:</strong>
-                    <input type="text" name="name" class="form-control" placeholder="Title">
+                    <strong>Имя:</strong>
+                    <input type="text" name="name" class="form-control" placeholder="Name">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Category:</strong>
-                    {!! Form::select('category',  $categories, null, ['class' => 'form-control']) !!}
-
+                    <strong>Фамилия:</strong>
+                    <input type="text" name="name" class="form-control" placeholder="Surname">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>User type:</strong>
-                    {!! Form::select('user_type',  $user_types, null, ['class' => 'form-control']) !!}
-
-
+                    <strong>Отчество:</strong>
+                    <input type="text" name="name" class="form-control" placeholder="Patronymic">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Description:</strong>
-                    <textarea class="form-control" style="height:150px" name="description" placeholder="Description"></textarea>
+                    <strong>Email соискателя:</strong>
+                    {!! Form::select('user_id',  $users, null, ['class' => 'form-control']) !!}
+
 
                 </div>
             </div>

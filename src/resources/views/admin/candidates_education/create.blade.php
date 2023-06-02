@@ -21,7 +21,7 @@
             </ul>
         </div>
     @endif
-    'name_educational_university', 'location_educational_university', 'institute', 'year_of_release', 'candidate_full_name_id'
+
     <form action="{{ route('admin.candidates_education.store') }}" method="POST">
         @csrf
 
@@ -50,7 +50,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Год выпуска:</strong>
-                    <input type="datetime-local" name="name" class="form-control" placeholder="Year">
+                    <input type="date" name="name" class="form-control" placeholder="Year">
                 </div>
             </div>
 
@@ -62,13 +62,6 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Description:</strong>
-                    <textarea class="form-control" style="height:150px" name="description" placeholder="Description"></textarea>
-
-                </div>
-            </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

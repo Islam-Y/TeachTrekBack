@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 
     <div class="row">
@@ -7,7 +7,7 @@
 
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('company.create') }}"> Create New Company</a>
+                <a class="btn btn-success" href="{{ route('admin.photos.create') }}"> Create New Photo</a>
             </div>
         </div>
     </div>
@@ -20,17 +20,17 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>Title</th>
-            <th>Description</th>
+            <th>Фотографии</th>
+
         </tr>
-        @foreach ($companies as $company)
+        @foreach ($photos as $photo)
             <tr>
-                <td>{{ $company->name }}</td>
-                <td>{{ $company->description }}</td>
+                <td>{{ $photo->id }}</td>
+
                 <td>
-                    <a class="btn btn-info" href="{{ route('company.show',$company->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('company.edit',$company->id) }}">Edit</a>
-                    <form action="{{ route('company.destroy',$company->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('admin.photos.show',$photo->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('admin.photos.edit',$photo->id) }}">Edit</a>
+                    <form action="{{ route('admin.photos.destroy',$photo->id) }}" method="POST">
 
                         @csrf
                         @method('DELETE')

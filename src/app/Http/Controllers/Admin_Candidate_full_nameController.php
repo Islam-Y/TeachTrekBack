@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCandidate_full_nameRequest;
 use App\Http\Requests\UpdateCandidate_full_nameRequest;
 use App\Models\Candidate_full_name;
+use App\Models\User;
 
 class Admin_Candidate_full_nameController extends Controller
 {
@@ -23,7 +24,12 @@ class Admin_Candidate_full_nameController extends Controller
      */
     public function create()
     {
-        return view('admin.candidates_full_name.create');
+        $users = User::all()->pluck('email', 'id')->all();
+
+        return view('admin.candidates_full_name.create', [
+            'users' => $users,
+        ]);
+
     }
 
     /**
@@ -35,7 +41,7 @@ class Admin_Candidate_full_nameController extends Controller
             'name' => 'required',
             'surname' => 'required',
             'patronymic' => 'required',
-            'candidate_id' => 'required',
+            'user_id' => 'required',
         ]);
 
         Candidate_full_name::create($request->all());
@@ -68,7 +74,7 @@ class Admin_Candidate_full_nameController extends Controller
             'name' => 'required',
             'surname' => 'required',
             'patronymic' => 'required',
-            'candidate_id' => 'required',
+            'user_id' => 'required',
         ]);
 
         $candidate_full_name->update($request->all());

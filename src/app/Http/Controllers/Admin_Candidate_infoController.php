@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCandidate_infoRequest;
 use App\Http\Requests\UpdateCandidate_infoRequest;
+use App\Models\Candidate_full_name;
 use App\Models\Candidate_info;
+use App\Models\File;
+use App\Models\Photo;
 
 class Admin_Candidate_infoController extends Controller
 {
@@ -23,7 +26,16 @@ class Admin_Candidate_infoController extends Controller
      */
     public function create()
     {
-        return view('admin.candidates_info.create');
+        $photos = Photo::all();
+        $files = File::all();
+        $candidates_full_name = Candidate_full_name::all()->pluck('name', 'id')->all();
+
+        return view('admin.candidates_info.create', [
+            'candidates_full_name' => $candidates_full_name,
+            'photos' => $photos,
+            'files' => $files,
+        ]);
+
     }
 
     /**

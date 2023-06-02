@@ -28,35 +28,47 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Name:</strong>
-                    <input type="text" name="name" class="form-control" placeholder="Title">
+                    <strong>Наименование предыдущей компании:</strong>
+                    <input type="text" name="name" class="form-control">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Category:</strong>
-                    {!! Form::select('category',  $categories, null, ['class' => 'form-control']) !!}
-
+                    <strong>Должность в предыдущей компании:</strong>
+                    <input type="text" name="name" class="form-control">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>User type:</strong>
-                    {!! Form::select('user_type',  $user_types, null, ['class' => 'form-control']) !!}
-
-
+                    <strong>Местоположение предыдущей компании:</strong>
+                    <input type="text" name="name" class="form-control">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Description:</strong>
-                    <textarea class="form-control" style="height:150px" name="description" placeholder="Description"></textarea>
+                    <strong>Дата трудоустройства:</strong>
+                    <input type="date" name="name" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Дата увольнения:</strong>
+                    <input type="date" name="name" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Соискатель:</strong>
+                    {!! Form::select('candidate_full_name_id',  $candidates_full_name, null, ['class' => 'form-control']) !!}
 
                 </div>
             </div>
+
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

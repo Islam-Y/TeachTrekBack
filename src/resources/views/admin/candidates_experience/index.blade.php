@@ -25,6 +25,7 @@
             <th>Местоположение предыдущей компании</th>
             <th>Дата трудоустройства</th>
             <th>Дата увольнения</th>
+            <th>Соискатель</th>
         </tr>
         @foreach ($candidates_experience as $candidate_experience)
             <tr>
@@ -33,6 +34,7 @@
                 <td>{{ $candidate_experience->location_old_company}}</td>
                 <td>{{ $candidate_experience->start_work }}</td>
                 <td>{{ $candidate_experience->end_work }}</td>
+                <td>{{ $candidate_education->candidates_full_name }}</td>
                 <td>
                     <a class="btn btn-info" href="{{ route('admin.candidates_experience.show',$candidate_experience->id) }}">Show</a>
                     <a class="btn btn-primary" href="{{ route('admin.candidates_experience.edit',$candidate_experience->id) }}">Edit</a>

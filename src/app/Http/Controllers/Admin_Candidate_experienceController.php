@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCandidate_experienceRequest;
 use App\Http\Requests\UpdateCandidate_experienceRequest;
 use App\Models\Candidate_experience;
+use App\Models\Candidate_full_name;
 
 class Admin_Candidate_experienceController extends Controller
 {
@@ -23,7 +24,12 @@ class Admin_Candidate_experienceController extends Controller
      */
     public function create()
     {
-        return view('admin.candidates_experience.create');
+        $candidates_full_name = Candidate_full_name::all()->pluck('name', 'id')->all();
+
+        return view('admin.candidates_experience.create', [
+            'candidates_full_name' => $candidates_full_name,
+        ]);
+
     }
 
     /**
