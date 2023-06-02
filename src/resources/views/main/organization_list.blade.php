@@ -23,7 +23,9 @@
                     @foreach ($organizations as $organization)
                         <li class="organization-item">
                             <div class="description-organization">
-                                <h2 class="name-organization">{{ $organization->name }}</h2>
+                                <a href={{ route('organization_profile', $organization->id) }}>
+                                    <h2 class="name-organization">{{ $organization->name }}</h2>
+                                </a>
                                 <img src="img/img-school.png" alt="Организация" width="150px" height="150px">
                                 <div class="estimation">5.0</div>
                                 <div class="city-underground">
